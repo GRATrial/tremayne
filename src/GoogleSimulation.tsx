@@ -261,7 +261,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                 {currentPage > 1 && (
                   <button
                     onClick={() => {
-                      trackPagination(currentPage - 1, 'tremayne', footprintCondition);
+                      trackPagination(currentPage - 1, 'tremayne', footprintCondition, prolificParams);
                       setCurrentPage(currentPage - 1);
                     }}
                     style={{
@@ -289,7 +289,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                     <button
                       key={pageNum}
                       onClick={() => {
-                        trackPagination(pageNum, 'tremayne', footprintCondition);
+                        trackPagination(pageNum, 'tremayne', footprintCondition, prolificParams);
                         setCurrentPage(pageNum);
                       }}
                       style={{
@@ -313,7 +313,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                 {currentPage < totalPages && (
                   <button
                     onClick={() => {
-                      trackPagination(currentPage + 1, 'tremayne', footprintCondition);
+                      trackPagination(currentPage + 1, 'tremayne', footprintCondition, prolificParams);
                       setCurrentPage(currentPage + 1);
                     }}
                     style={{
