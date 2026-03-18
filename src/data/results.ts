@@ -1,0 +1,7079 @@
+// ### PLACEHOLDER: Researcher will paste final names/race/location data here
+
+
+
+
+
+
+
+export type SimResult = {
+
+
+
+  id: string;
+
+
+
+  platform: "LinkedIn" | "Facebook" | "Instagram" | "Wikipedia" | "Olympics.com" | "ESPN" | "U.S. Olympic & Paralympic Museum" | "USA Track & Field" | "MJ Performance" | string;
+
+
+
+  displayName: string;          // ### PLACEHOLDER: Will be replaced with final names
+
+
+
+  snippet: string;              // short fictional summary
+
+
+
+  urlLike: string;              // e.g., "linkedin.com/in/mjohnson-…"
+
+
+
+  discoverability: "High" | "Low";
+
+
+
+  footprint: "Present" | "Absent";
+
+
+
+  race: "White American" | "African American";
+
+
+
+  location?: string;            // ### PLACEHOLDER: Will be replaced with final locations
+
+
+
+  imageKey?: string;            // map to a blurred placeholder
+
+
+
+  missingNote?: string;         // e.g., "Missing: de | Show results with: dc"
+
+
+
+  currentRole?: string;         // For LinkedIn: current job title
+
+
+
+  currentCompany?: string;       // For LinkedIn: current company
+
+
+
+  followers?: string;            // For LinkedIn/Instagram: follower count
+
+
+
+  sideImageUrl?: string;         // For right-side thumbnail
+
+
+
+};
+
+
+
+
+
+
+
+// Seed names - ### PLACEHOLDER: RESEARCHER WILL PASTE FINAL NAMES
+
+
+
+// Common (White American): "Michael Johnson", "Christopher Smith", "Jessica Williams"
+
+
+
+// Common (African American): "Jamal Washington", "Darius Harris", "Aaliyah Brown"
+
+
+
+// Uncommon examples: "Zephyr Washington", "Nikola Reese"
+
+
+
+
+
+
+
+// Condition A: High Discoverability + Footprint Present
+
+
+
+// UNCOMMON name (e.g., Zephyr Washington) with LinkedIn + Facebook + Instagram all matching and consistent
+
+
+
+// Should look like an authentic search result snippet with profile cards
+
+
+
+export const RESULTS_High_Present: SimResult[] = [
+
+
+
+  {
+
+
+
+    id: "hp1",
+
+
+
+    platform: "Apartments.com",
+
+
+
+    displayName: "Zephyr at Wardman Park - 2601 Calvert St NW ...",
+
+
+
+    snippet: "Zephyr at Wardman Park has studios to two bedrooms with rent ranges from $1,996/mo. to $6,621/mo. Can I see a model or tour Zephyr ...",
+
+
+
+    urlLike: "www.apartments.com › ... › Woodley Park",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar1"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp2",
+
+
+
+    platform: "Wardman Park",
+
+
+
+    displayName: "Zephyr at Wardman Park",
+
+
+
+    snippet: "Striking new apartment and penthouse residences at Zephyr in Woodley Park elevate DC living with unique high-end amenities and one-of-a-kind city views.",
+
+
+
+    urlLike: "www.wardmanpark.com › zephyr-apartments",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar2"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp3",
+
+
+
+    platform: "EquityApartments.com",
+
+
+
+    displayName: "Zephyr on the Park Apartments in Redmond",
+
+
+
+    snippet: "Full of unique charm and hospitality in the heart of Redmond is Zephyr on the Park Apartments. Our modern architecture houses an incredible collection of homes ...",
+
+
+
+    urlLike: "www.equityapartments.com › downtown-redmond",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Redmond, WA",
+
+
+
+    imageKey: "avatar3"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp4",
+
+
+
+    platform: "Greystar",
+
+
+
+    displayName: "Zephyr at Wardman Park in Washington, DC",
+
+
+
+    snippet: "Building overview. Rooted in the essence of its surroundings, Zephyr is a striking embodiment of urban elegance and dynamic energy.",
+
+
+
+    urlLike: "www.greystar.com › zephyr-at-wardman-park-w...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar4"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp5",
+
+
+
+    platform: "Wardman Park",
+
+
+
+    displayName: "Wardman Park - Now Leasing Aerie & Zephyr in Woodley ...",
+
+
+
+    snippet: "Introducing two distinct new resort communities in Woodley Park. At Aerie and Zephyr, you'll experience elevated living with luxury finishes, breathtaking DC ...",
+
+
+
+    urlLike: "www.wardmanpark.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar5"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp6",
+
+
+
+    platform: "Zephyr Apartments Seattle",
+
+
+
+    displayName: "Zephyr Apartments Seattle",
+
+
+
+    snippet: "Zephyr Apartments has arrived at Belmont and Olive Way in Seattle's vibrant Capitol Hill neighborhood. Relax and unwind in Zephyr's spacious, modern units.",
+
+
+
+    urlLike: "zephyrseattle.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar6"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp7",
+
+
+
+    platform: "Apartments.com",
+
+
+
+    displayName: "Zephyr Apartments: Elevated Living in the ... - Seattle",
+
+
+
+    snippet: "This contemporary community blends sleek, high-end finishes with thoughtful design, all set just minutes from Downtown Seattle and South Lake Union.",
+
+
+
+    urlLike: "www.apartments.com › ... › Seattle › Capitol Hill",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar7"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp8",
+
+
+
+    platform: "American University",
+
+
+
+    displayName: "Zephyr at Wardman Park Apartments",
+
+
+
+    snippet: "Apartment Description. Rooted in the essence of its surroundings, Zephyr is a striking embodiment of urban elegance and dynamic energy.",
+
+
+
+    urlLike: "offcampus.american.edu › housing › property › z...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar8"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp9",
+
+
+
+    platform: "Yelp",
+
+
+
+    displayName: "ZEPHYR APARTMENTS - Updated November 2025",
+
+
+
+    snippet: "ZEPHYR APARTMENTS, 200 Belmont Ave E, Seattle, WA 98102, 43 Photos, (206) 322-9010, Mon - 9:00 am - 6:00 pm, Tue - 9:00 am - 6:00 pm, Wed - 9:00 am - 6:00 ...",
+
+
+
+    urlLike: "www.yelp.com › ... › Real Estate › Apartments",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar9"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp10",
+
+
+
+    platform: "Wardman Park",
+
+
+
+    displayName: "Zephyr - Woodley Park Apartments & Penthouses",
+
+
+
+    snippet: "Learn what set's Zephyr's unique Woodley Park locale apart: tree-lined historic charm, fast metro access to the city, scenic parks, and great dining.",
+
+
+
+    urlLike: "www.wardmanpark.com › location",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar10"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp11",
+
+
+
+    platform: "zephyrlibertylake.com",
+
+
+
+    displayName: "Zephyr Lodge | Wedding & Event Venue in Liberty Lake, WA",
+
+
+
+    snippet: "Experience a timeless treasure on Liberty Lake, Washington. Built in 1902, Zephyr Lodge has always been a place for people to gather.",
+
+
+
+    urlLike: "www.zephyrlibertylake.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Liberty Lake, WA",
+
+
+
+    imageKey: "avatar11"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp12",
+
+
+
+    platform: "Apartments and Homes For Rent - ApartmentHomeLiving.com",
+
+
+
+    displayName: "Zephyr Apartments: Elevated Living in Seattle, WA",
+
+
+
+    snippet: "Zephyr Apartments offers elevated city living in the heart of Seattle's Capitol Hill neighborhood. This contemporary community blends sleek, high-end finishes ...",
+
+
+
+    urlLike: "www.apartmenthomeliving.com › Zephyr-Apart...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar12"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp13",
+
+
+
+    platform: "Zephyr Ventilation",
+
+
+
+    displayName: "Zephyr Expands Direct Distribution Into Six New States",
+
+
+
+    snippet: "Oct 1, 2020 — ... Washington, and Wyoming. The San Francisco-based appliance manufacturer will now sell direct into a total of 12 states across the U.S.. For ...",
+
+
+
+    urlLike: "zephyronline.com › Press Releases",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington",
+
+
+
+    imageKey: "avatar13"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp14",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "Event Space (@zephyrlibertylake) · Liberty Lake, WA",
+
+
+
+    snippet: "2.6K+ followers. Our rustic, idyllic, lake side event venue nestled in the pines on Liberty Lake, WA. Weddings, concerts, yoga retreats, and more. zephyrlibertylake.com + 1.",
+
+
+
+    urlLike: "www.instagram.com › zephyrlibertylake",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Liberty Lake, WA",
+
+
+
+    imageKey: "avatar14"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp15",
+
+
+
+    platform: "Key Technology",
+
+
+
+    displayName: "Key Technology: Food Processing Equipment & Sorting ...",
+
+
+
+    snippet: "Zephyr Horizontal Motion Conveyor · VERYX 2.0 Optical Sorting Platform · ADR ... Walla Walla WA 99362 USA +1 (509) 529-2161. Beijerdstraat 10 4112 NE",
+
+
+
+    urlLike: "www.key.net › ...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Walla Walla, WA",
+
+
+
+    imageKey: "avatar15"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp16",
+
+
+
+    platform: "r/V Zephyr",
+
+
+
+    displayName: "ZephyrNW - Research Vessel, Charter Boat",
+
+
+
+    snippet: "Research Vessel Zephyr is a ready-to-work charter vessel, based in the Pacific Northwest with many expeditions under her waterline.",
+
+
+
+    urlLike: "zephyrnw.com › research",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Pacific Northwest",
+
+
+
+    imageKey: "avatar16"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp17",
+
+
+
+    platform: "Facebook",
+
+
+
+    displayName: "Zephyr on the Park | Redmond WA",
+
+
+
+    snippet: "20+ followers. This content isn't available right now. When this happens, it's usually because the owner only shared it with a small group of people, changed who can see it or ...",
+
+
+
+    urlLike: "www.facebook.com › Zephyr-on-the-Park",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Redmond, WA",
+
+
+
+    imageKey: "avatar17"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp18",
+
+
+
+    platform: "seattlezephyr.com",
+
+
+
+    displayName: "Seattle Zephyr Inc",
+
+
+
+    snippet: "Seattle Zephyr Inc is a privately-owned and Seattle-based corporation, established in 2016. We aim to revive historical communities in the vincity of greater ...",
+
+
+
+    urlLike: "seattlezephyr.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar18"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp19",
+
+
+
+    platform: "Amtrak",
+
+
+
+    displayName: "Traditional Dining",
+
+
+
+    snippet: "... Northwest · South · West. Find Station/Route. Ask Julie Clear input. No stations or ... Traditional Dining service is offered on the Auto Train, California Zephyr ...",
+
+
+
+    urlLike: "www.amtrak.com › meals-dining › dining-car",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington",
+
+
+
+    imageKey: "avatar19"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp20",
+
+
+
+    platform: "DC Power Football Club",
+
+
+
+    displayName: "DC Power Football Club: Homepage",
+
+
+
+    snippet: "DC Power FC brings pro women's soccer to Washington, D.C. Find match updates, tickets, and news. Join ... Spokane Zephyr FC · Sporting JAX · Tampa ...",
+
+
+
+    urlLike: "www.dcpowerfootballclub.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar20"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp21",
+
+
+
+    platform: "Key Technology",
+
+
+
+    displayName: "Key Technology: Food Processing Equipment & Sorting ...",
+
+
+
+    snippet: "Zephyr Horizontal Motion Conveyor · VERYX 2.0 Optical Sorting Platform · ADR ... Walla Walla WA 99362 USA +1 (509) 529-2161. Beijerdstraat 10 4112 NE",
+
+
+
+    urlLike: "www.key.net › ...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Walla Walla, WA",
+
+
+
+    imageKey: "avatar21"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp22",
+
+
+
+    platform: "Monumental Sports Network Official Online Store",
+
+
+
+    displayName: "Men's Levelwear Navy Washington Capitals Zephyr ...",
+
+
+
+    snippet: "Washington Capitals. Men's Levelwear Navy Washington Capitals Zephyr Adjustable Hat. Out of Stock ...",
+
+
+
+    urlLike: "shop.monumentalsportsnetwork.com › mens-lev...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar22"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp23",
+
+
+
+    platform: "Yelp",
+
+
+
+    displayName: "ZEPHYR APARTMENTS - Updated December 2025",
+
+
+
+    snippet: "ZEPHYR APARTMENTS, 200 Belmont Ave E, Seattle, WA 98102, 43 Photos, (206) 322-9010, Mon - 9:00 am - 6:00 pm, Tue - 9:00 am - 6:00 pm, Wed - 9:00 am - 6:00 ...",
+
+
+
+    urlLike: "www.yelp.com › ... › Real Estate › Apartments",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar23"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp24",
+
+
+
+    platform: "Zephyr Van",
+
+
+
+    displayName: "Zephyr Van - Sprinter Van Conversions For Sale",
+
+
+
+    snippet: "Zephyr Van is a Sprinter van conversion company specializing in overland builds with high-end finishes. ENGINEERED. OFF-GRID.",
+
+
+
+    urlLike: "zephyrvan.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington",
+
+
+
+    imageKey: "avatar24"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp25",
+
+
+
+    platform: "zephyrlibertylake.com",
+
+
+
+    displayName: "Zephyr Lodge Wedding Venue in Liberty Lake, WA",
+
+
+
+    snippet: "Built in 1902, the Zephyr Lodge has been the home of over a century of joyous occasions. In 2017, the lodge and surrounding grounds were fully restored to offer ...",
+
+
+
+    urlLike: "www.zephyrlibertylake.com › weddings",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Liberty Lake, WA",
+
+
+
+    imageKey: "avatar25"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp26",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "Event Space (@zephyrlibertylake) · Liberty Lake, WA",
+
+
+
+    snippet: "2.6K+ followers. Our rustic, idyllic, lake side event venue nestled in the pines on Liberty Lake, WA. Weddings, concerts, yoga retreats, and more. zephyrlibertylake.com + 1.",
+
+
+
+    urlLike: "www.instagram.com › zephyrlibertylake",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Liberty Lake, WA",
+
+
+
+    imageKey: "avatar26"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp27",
+
+
+
+    platform: "Rent.com",
+
+
+
+    displayName: "Zephyr at Wardman Park - 2601 Calvert St NW",
+
+
+
+    snippet: "See photos, floor plans and more details about Zephyr at Wardman Park in Washington, District of Columbia. Visit Rent. now for rental rates and other ...",
+
+
+
+    urlLike: "www.rent.com › ... › Washington › 20008",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar27"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp28",
+
+
+
+    platform: "Zephyr Seattle",
+
+
+
+    displayName: "Zephyr Seattle: Home",
+
+
+
+    snippet: "Zephyr Apartments has officially arrived at the iconic intersection of Belmont Avenue and Olive Way, located in Seattle's lively Capitol Hill neighborhood.",
+
+
+
+    urlLike: "zephyrseattle.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar28"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp29",
+
+
+
+    platform: "Wardman Park",
+
+
+
+    displayName: "Zephyr Apartments Blog",
+
+
+
+    snippet: "Zephyr Apartments Blog. NW Washington DC. Category. Category Remove item. Category. Living at Zephyr. NW Washington DC. Boulder Bridge in Rock Creek Park, a ...",
+
+
+
+    urlLike: "www.wardmanpark.com › zephyr-apartments",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar29"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp30",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "Experience Home at Zephyr Wardman Park in Washington D.C.",
+
+
+
+    snippet: "20+ likes · 1 week ago. 0:51. Discover the essence of Zephyr Wardman Park, a thoughtfully designed unit in Washington D.C. that offers a perfect blend of comfort, style, ...",
+
+
+
+    urlLike: "www.instagram.com › wardmanparkdc",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar30"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp31",
+
+
+
+    platform: "YouTube",
+
+
+
+    displayName: "Zephyr (with Audio Description) | Washington DC Apartments ...",
+
+
+
+    snippet: "40+ views · 1 month ago. 0:33. Rooted in the essence of its surroundings, Zephyr is a striking embodiment of urban elegance and dynamic energy.",
+
+
+
+    urlLike: "www.youtube.com › Greystar",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar31"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp32",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "Experience Home at Zephyr Wardman Park in Washington D.C.",
+
+
+
+    snippet: "20+ likes · 1 week ago. 0:51. Discover the essence of Zephyr Wardman Park, a thoughtfully designed unit in Washington D.C. that offers a perfect blend of comfort, style, ...",
+
+
+
+    urlLike: "www.instagram.com › wardmanparkdc",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar32"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp33",
+
+
+
+    platform: "Apartment List",
+
+
+
+    displayName: "Zephyr - Washington, DC apartments for rent",
+
+
+
+    snippet: "Rooted in the essence of its surroundings, Zephyr is a striking embodiment of urban elegance and dynamic energy. Inspired by the pulse of Washington, D.C., this ...",
+
+
+
+    urlLike: "www.apartmentlist.com › Washington, DC",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar33"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp34",
+
+
+
+    platform: "ApartmentFinder.com",
+
+
+
+    displayName: "Zephyr Apartments: Elevated Living in the ... - 1650 E Olive ...",
+
+
+
+    snippet: "Zephyr Apartments: Elevated Living in the ... is located in Seattle, Washington in the 98102 zip code. This apartment community was built in 2015 and has 7 ...",
+
+
+
+    urlLike: "www.apartmentfinder.com › Seattle-Apartments",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Seattle, WA",
+
+
+
+    imageKey: "avatar34"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp35",
+
+
+
+    platform: "Homes.com",
+
+
+
+    displayName: "Zephyr at Wardman Park - 2601 Calvert St NW, ...",
+
+
+
+    snippet: "Zephyr captures the spirit of a metropolis in motionwhere history meets innovation, and every corner hums with possibility.With clean lines and a refined ...",
+
+
+
+    urlLike: "www.homes.com › ... › 20008 › Woodley Park",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar35"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp36",
+
+
+
+    platform: "USL Spokane",
+
+
+
+    displayName: "USL Spokane: Homepage",
+
+
+
+    snippet: "Based in Spokane, Washington ... fielding two soccer teams – the women's Division One USL Super League Spokane Zephyr FC, and the men's professional USL League ...",
+
+
+
+    urlLike: "www.uslspokane.com",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Spokane, WA",
+
+
+
+    imageKey: "avatar36"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp37",
+
+
+
+    platform: "Amtrak Vacations",
+
+
+
+    displayName: "First Class Private Rooms",
+
+
+
+    snippet: "Seattle, WA · Washington, DC · Search by map View all destinations Amtrak's famous routes · Limited-Time Offer, 15+ Nights. Flash sale. For a limited time only ...",
+
+
+
+    urlLike: "www.amtrakvacations.com › trip-planning › priv...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington",
+
+
+
+    imageKey: "avatar37"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp38",
+
+
+
+    platform: "vitalogycraft.com",
+
+
+
+    displayName: "Snapback Hat Zephyr Cap Price Zephyr Washington Huskies ...",
+
+
+
+    snippet: "Zephyr Washington Huskies Low Retro Diamond Snapback Hat Cap, Zephyr Mens Original Snapback Hat Cap Wool Blend USA Flag Bill Free Shipping!, ...",
+
+
+
+    urlLike: "www.vitalogycraft.com › ...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington",
+
+
+
+    imageKey: "avatar38"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp39",
+
+
+
+    platform: "KWKT - FOX 44",
+
+
+
+    displayName: "Zephyr Selects QUODD's QX Digital to Power Market Data, ...",
+
+
+
+    snippet: "3 hours ago — ... Washington DC · Your Local Election HQ · Business News · Crime · Weird News ... Zephyr Selects QUODD's QX Digital to Power Market Data, Analytics, ...",
+
+
+
+    urlLike: "www.fox44news.com › press-releases › cision",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar39"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "hp40",
+
+
+
+    platform: "Facebook",
+
+
+
+    displayName: "Mercury Zephyr Sighting in Vancouver, WA",
+
+
+
+    snippet: "7 comments · 6 months ago. Spotted this Mercury Zephyr that appeared to be in pretty fair shape out and about in Vancouver, WA today · No photo description available. ... My ...",
+
+
+
+    urlLike: "www.facebook.com › Underwhelming Cars",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Vancouver, WA",
+
+
+
+    imageKey: "avatar40"
+
+
+
+  }
+
+
+
+];
+
+
+
+
+
+
+
+// Condition B: High Discoverability + Footprint Absent
+
+
+
+// UNCOMMON name with "No public profiles available" or similar placeholder message
+
+
+
+// Minimal, single "no results found" layout
+
+
+
+export const RESULTS_High_Absent: SimResult[] = [
+
+
+
+  // Empty array - will show "No results found" message
+
+
+
+];
+
+
+
+
+
+
+
+
+// Condition D: Low Discoverability + Footprint Absent
+
+export const RESULTS_Low_Absent: SimResult[] = [
+  // Empty array - will show "No results found" message
+];
+
+// Condition C: Low Discoverability + Footprint Present
+
+
+
+// COMMON name (e.g., Michael Johnson) with 3-4 similar profiles with same name; ambiguous which one is correct
+
+
+
+// Results look crowded; multiple nearly identical links
+
+
+
+export const RESULTS_Low_Present: SimResult[] = [
+
+
+
+  {
+
+
+
+    id: "lp1",
+
+
+
+    platform: "Wikipedia",
+
+
+
+    displayName: "Michael Johnson (sprinter)",
+
+
+
+    snippet: "Michael Duane Johnson (born September 13, 1967) is an American sprinter who became Olympic Champion four times, and World Champion eight times in the span ...",
+
+
+
+    urlLike: "en.wikipedia.org › wiki › Michael_Johnson_(spr...",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar1"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp2",
+
+
+
+    platform: "Olympics.com",
+
+
+
+    displayName: "Michael JOHNSON",
+
+
+
+    snippet: "Michael Johnson is widely regarded as one of the greatest sprinters of all time. In the 1990s, the four-time Olympic gold medallist dominated the 200m and 400m.",
+
+
+
+    urlLike: "www.olympics.com › athletes › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar2"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp3",
+
+
+
+    platform: "ESPN",
+
+
+
+    displayName: "Michael Johnson (Lightweight) MMA Profile",
+
+
+
+    snippet: "View the profile of the MMA fighter Michael Johnson from USA on ESPN. Get the latest news, live stats and MMA fight highlights.",
+
+
+
+    urlLike: "www.espn.com › mma › fighter › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar3"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp4",
+
+
+
+    platform: "Wikipedia",
+
+
+
+    displayName: "Michael Johnson (fighter)",
+
+
+
+    snippet: "Michael Julian Johnson (born June 4, 1986) is an American professional mixed martial artist. Johnson currently fights in the Lightweight division of the ...",
+
+
+
+    urlLike: "en.wikipedia.org › wiki › Michael_Johnson_(fig...",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar4"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp5",
+
+
+
+    platform: "U.S. Olympic & Paralympic Museum",
+
+
+
+    displayName: "Michael Johnson | Track and Field Athlete & Olympic Gold",
+
+
+
+    snippet: "Explore the legacy of Michael Johnson, one of the world's best sprinters of his time, winning four Olympic gold medals over 3 Olympic Games.",
+
+
+
+    urlLike: "usopm.org › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar5"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp6",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "Michael Johnson (@mjgold4)",
+
+
+
+    snippet: "106.1K+ followers · 106K followers · 342 following · 237 posts · @mjgold4: \"Olympic and World Champion. 12x Gold 0x Silver 0x Bronze. CEO & Commissioner Grand Slam Track\"",
+
+
+
+    urlLike: "Instagram · mjgold4",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar6"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp7",
+
+
+
+    platform: "USA Track & Field",
+
+
+
+    displayName: "USA Track & Field | Michael Johnson",
+
+
+
+    snippet: "The current world and American record holder in the 200 and 400 meters, Michael Johnson became the first man in history to win both those events at the same ...",
+
+
+
+    urlLike: "usatf.org › athlete-bios › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar7"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp8",
+
+
+
+    platform: "MJ Performance",
+
+
+
+    displayName: "Michael Johnson | MJ Performance",
+
+
+
+    snippet: "Michael Johnson founded Michael Johnson Performance® in 2007 with a passion to help athletes of all ages, in any sport, reach their full potential.",
+
+
+
+    urlLike: "www.michaeljohnsonperformance.com › michael-...",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar8"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp8b",
+
+
+
+    platform: "LinkedIn",
+
+
+
+    displayName: "Michael Johnson",
+
+
+
+    snippet: "Professional profile with work experience, education, and skills. Connect to view full profile details.",
+
+
+
+    urlLike: "linkedin.com/in/michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar8b"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp9",
+
+
+
+    platform: "worldathletics.org",
+
+
+
+    displayName: "Michael JOHNSON | Profile",
+
+
+
+    snippet: "Athlete. Michael JOHNSON. 200m. 400m. United States. Born13 SEP 1967. Michael's code14242187. 4X. Olympic champion. 8X. World champion. Show more ...",
+
+
+
+    urlLike: "worldathletics.org › michael-johnson-14242187",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar9"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp10",
+
+
+
+    platform: "Harvard University",
+
+
+
+    displayName: "Michael Johnson | Institute for Theory and Computation",
+
+
+
+    snippet: "Michael D. Johnson is a Smithsonian astrophysicist, a lecturer in the Harvard Department of Astronomy and an inaugural member of the Harvard Black Hole ...",
+
+
+
+    urlLike: "itc.cfa.harvard.edu › people › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar10"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp11",
+
+
+
+    platform: "Congressman Mike Johnson (.gov)",
+
+
+
+    displayName: "Contact | U.S. Congressman Mike Johnson - House.gov",
+
+
+
+    snippet: "I value all feedback from constituents. Our office is here to serve you. Please find below the best ways to contact our office for specific requests.",
+
+
+
+    urlLike: "mikejohnson.house.gov › contact",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar11"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp12",
+
+
+
+    platform: "The University of Arizona",
+
+
+
+    displayName: "Michael D. L. Johnson, PhD | the Department of Immunobiology",
+
+
+
+    snippet: "Associate Professor, Immunobiology Member, BIO5 Institute Member, Valley Fever Center for Excellence Member, Asthma & Airway Disease Research Center",
+
+
+
+    urlLike: "immunobiology.arizona.edu › profile › michael-d...",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar12"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp13",
+
+
+
+    platform: "Foster School of Business",
+
+
+
+    displayName: "Michael Johnson | Foster School of Business",
+
+
+
+    snippet: "Michael Johnson, The Boeing Company Endowed Professor in Business Management Education. Academic Expertise: Current Research, Selected Publications.",
+
+
+
+    urlLike: "foster.uw.edu › faculty-research › directory › mi...",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar13"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp14",
+
+
+
+    platform: "Missouri House of Representatives (.gov)",
+
+
+
+    displayName: "Representative Michael Johnson",
+
+
+
+    snippet: "Representative Michael Johnson. Representative Michael Johnson. District 023. Democrat. Elected: 2020. Years Served: 5. Hometown: Kansas City. Counties: Jackson ...",
+
+
+
+    urlLike: "house.mo.gov › MemberDetails",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar14"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp15",
+
+
+
+    platform: "South Carolina Legislature (.gov)",
+
+
+
+    displayName: "Senator Michael Johnson",
+
+
+
+    snippet: "510 Gressette Bldg. Columbia 29201. Business Phone: 803-212-6172. Home Address. 1201 Carolina Pl Suite 103 Fort Mill 29708. Committee Assignments. Agriculture ...",
+
+
+
+    urlLike: "www.scstatehouse.gov › member",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar15"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp16",
+
+
+
+    platform: "Facebook",
+
+
+
+    displayName: "Michael Johnson",
+
+
+
+    snippet: "Michael Johnson. 127690 likes · 23 talking about this. The Official Facebook page of Michael Johnson.",
+
+
+
+    urlLike: "www.facebook.com › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar16"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp17",
+
+
+
+    platform: "Wikipedia",
+
+
+
+    displayName: "Mike Johnson",
+
+
+
+    snippet: "James Michael Johnson (born January 30, 1972) is an American lawyer and politician serving as the 56th speaker of the United States House of Representatives ...",
+
+
+
+    urlLike: "en.wikipedia.org › wiki › Mike_Johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar17"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp18",
+
+
+
+    platform: "UFC Stats",
+
+
+
+    displayName: "Michael Johnson Record: 25-19-0",
+
+
+
+    snippet: "Michael Johnson Record: 25-19-0 The Menace Career statistics: SLpM - Significant Strikes Landed per Minute Str. Acc. - Significant Striking Accuracy",
+
+
+
+    urlLike: "ufcstats.com › fighter-details",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar18"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp19",
+
+
+
+    platform: "Team USA",
+
+
+
+    displayName: "Michael Johnson",
+
+
+
+    snippet: "Learn about Michael Johnson, an Olympic gold medalist in Track and Field. Explore their biography, achievements, latest news and events and watch video ...",
+
+
+
+    urlLike: "www.teamusa.com › hall-of-fame-members › mi...",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar19"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp20",
+
+
+
+    platform: "Congress.gov",
+
+
+
+    displayName: "Mike Johnson",
+
+
+
+    snippet: "Mike Johnson, the Representative from Louisiana - in Congress from 2017 through Present.",
+
+
+
+    urlLike: "www.congress.gov › member › mike-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar20"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp21",
+
+
+
+    platform: "Pro-Football-Reference.com",
+
+
+
+    displayName: "Michael Johnson Stats, Height, Weight, Position, Draft ...",
+
+
+
+    snippet: "Checkout the latest stats for Michael Johnson. Get info about his position, age, height, weight, college, draft, and more on Pro-football-reference.com.",
+
+
+
+    urlLike: "www.pro-football-reference.com › Players › J",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar21"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp22",
+
+
+
+    platform: "speaker.gov",
+
+
+
+    displayName: "Home - Speaker of the House Mike Johnson",
+
+
+
+    snippet: "The 7 Core Principles of Conservatism · 1. Individual Freedom · 2. Limited Government · 3. The Rule of Law · 4. Peace Through Strength · 5. Fiscal Responsibility · 6.",
+
+
+
+    urlLike: "www.speaker.gov",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar22"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp23",
+
+
+
+    platform: "Facebook",
+
+
+
+    displayName: "One of the greatest sprinters of all time! 🐐 Defend 400m title ...",
+
+
+
+    snippet: "5.9K+ reactions · 1 year ago. 0:53. Defend 400m title ✓ Win fourth Olympic gold ✓ Relive that Michael Johnson magic at Sydney 2000. #Sydney2000 | World Athletics | Team USA.",
+
+
+
+    urlLike: "www.facebook.com › Olympics",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar23"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp24",
+
+
+
+    platform: "University of North Alabama Athletics",
+
+
+
+    displayName: "Michael Johnson - Assistant Coach / Running Backs",
+
+
+
+    snippet: "Apr 7, 2025 — Updated: April 7, 2025 A member of the UNA Athletic Hall of Fame and a former All-American linebacker for the Lions, Michael Johnson joined ...",
+
+
+
+    urlLike: "www.roarlions.com › football › roster › coaches",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar24"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp25",
+
+
+
+    platform: "Louisiana House of Representatives (.gov)",
+
+
+
+    displayName: "Johnson, Mike",
+
+
+
+    snippet: "State Representative Michael T. Johnson, Republican, District 27, My Legislation, CLICK TO OPEN MAP, DISTRICT INFORMATION, 2757 Hwy. 28 East, Pineville, LA ...",
+
+
+
+    urlLike: "house.louisiana.gov › H_Reps › members",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar25"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp26",
+
+
+
+    platform: "Britannica",
+
+
+
+    displayName: "Michael Johnson | Biography, Sprinter, Olympics, Gold ...",
+
+
+
+    snippet: "Michael Johnson is a former sprinter, perhaps the most eminent figure in athletics (track and field) in the 1990s. For much of the decade he was virtually ...",
+
+
+
+    urlLike: "www.britannica.com › ... › Olympic Sports",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar26"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp27",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "A letter from Michael Johnson to the track community.",
+
+
+
+    snippet: "12.9K+ likes · 3 months ago. Photo by Grand Slam Track on August 15, 2025. May be an image of.",
+
+
+
+    urlLike: "www.instagram.com › grandslamtrack",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar27"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp28",
+
+
+
+    platform: "LinkedIn",
+
+
+
+    displayName: "Michael Johnson - 12x Olympic & World Champion ...",
+
+
+
+    snippet: "12x Olympic & World Champion, 2x RTS Television Commentator of the Year, Business Performance Speaker & Advisor · Experience: Michael Johnson Performance ...",
+
+
+
+    urlLike: "linkedin.com › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar28"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp29",
+
+
+
+    platform: "Britannica",
+
+
+
+    displayName: "Michael Johnson | Biography, Sprinter, Olympics, Gold ...",
+
+
+
+    snippet: "Nov 18, 2025 — Michael Johnson is a former sprinter, perhaps the most eminent figure in athletics (track and field) in the 1990s.",
+
+
+
+    urlLike: "www.britannica.com › ... › Olympic Sports",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar29"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp30",
+
+
+
+    platform: "Facebook",
+
+
+
+    displayName: "One of the greatest sprinters of all time! 🐐 Defend 400m title ...",
+
+
+
+    snippet: "5.9K+ reactions · 1 year ago. 0:53. One of the greatest sprinters of all time! Defend 400m title, win fourth Olympic gold, relive that Michael Johnson magic at Sydney 2000.",
+
+
+
+    urlLike: "www.facebook.com › Olympics",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar30"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp31",
+
+
+
+    platform: "mjblue.com",
+
+
+
+    displayName: "Michael Johnson: Singer & Guitarist",
+
+
+
+    snippet: "MJ studied classical guitar in Barcelona and he played with a unique and distinctive style. Singing, playing, writing and recording were the only things he'd ...",
+
+
+
+    urlLike: "www.mjblue.com",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar31"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp32",
+
+
+
+    platform: "Getty Images",
+
+
+
+    displayName: "50236 Michael Johnson Photos & High Res Pictures",
+
+
+
+    snippet: "Browse Getty Images' premium collection of high-quality, authentic Michael Johnson photos & royalty-free pictures, taken by professional Getty Images ...",
+
+
+
+    urlLike: "www.gettyimages.com › Stock photos",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar32"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp33",
+
+
+
+    platform: "X",
+
+
+
+    displayName: "Speaker Mike Johnson (@SpeakerJohnson) / Posts / X",
+
+
+
+    snippet: "1.2M+ followers. Speaker Mike Johnson (@SpeakerJohnson) - Posts - 56th Speaker of the House | Christian, husband, dad, Constitutional law attorney & small ...",
+
+
+
+    urlLike: "x.com › SpeakerJohnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar33"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp34",
+
+
+
+    platform: "YouTube",
+
+
+
+    displayName: "The unstoppable Michael Johnson",
+
+
+
+    snippet: "74.5K+ views · 1 year ago. 0:30. Want to watch live sport and original documentaries for free? Check out our website: https://oly.ch/WatchLiveSport",
+
+
+
+    urlLike: "www.youtube.com › Olympics",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar34"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp35",
+
+
+
+    platform: "Laureus Sport",
+
+
+
+    displayName: "Michael Johnson",
+
+
+
+    snippet: "One of the most distinctive sprinters ever with his powerful, upright stride pattern, Michael Johnson is widely regarded as the greatest 400m runner of all ...",
+
+
+
+    urlLike: "www.laureus.com › members › michael-johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar35"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "lp36",
+
+
+
+    platform: "YouTube",
+
+
+
+    displayName: "Speaker Mike Johnson",
+
+
+
+    snippet: "115K+ followers. Speaker Mike Johnson is the 56th Speaker of the US House of Representatives and a Republican member of Congress proudly serving Louisiana's Fourth District.",
+
+
+
+    urlLike: "www.youtube.com › Speaker Mike Johnson",
+
+
+
+    discoverability: "Low",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "USA",
+
+
+
+    imageKey: "avatar36"
+
+
+
+  }
+
+
+
+];
+
+
+
+
+
+
+
+// Condition D: Low Discoverability + Footprint Absent
+
+
+
+// Adeeb Mohamed DC search results - 5 pages
+
+
+
+export const RESULTS_Adeeb_Present: SimResult[] = [
+
+
+
+  // Page 1
+
+
+
+  {
+
+
+
+    id: "adeeb1",
+
+
+
+    platform: "Facebook",
+
+
+
+    displayName: "Adeeb Mohammad in people",
+
+
+
+    snippet: "View the profiles of people named Adeeb Mohammad. Join Facebook to connect with Adeeb ... Mohammad Adeeb Mohammad. Lives in Washington D.C.. View profile.",
+
+
+
+    urlLike: "www.facebook.com › public › Adeeb-Mohammad",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar1",
+
+
+
+    missingNote: "Missing: mohamed | Show results with: mohamed"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb2",
+
+
+
+    platform: "LinkedIn",
+
+
+
+    displayName: "Adeeb Khaja Mohamed - Data Analytics Engineering",
+
+
+
+    snippet: "Currently pursuing a Master of Science in Data Analytics Engineering at George Mason University, I contribute as a Graduate Research Assistant at the ...",
+
+
+
+    urlLike: "www.linkedin.com › in › adeeb-khaja-mohamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Fairfax, Virginia, United States",
+
+
+
+    imageKey: "avatar2",
+
+
+
+    followers: "870+",
+
+
+
+    currentRole: "Graduate Research Assistant",
+
+
+
+    currentCompany: "George Mason University – Costello College of Business",
+
+
+
+    missingNote: "Missing: dc | Show results with: dc"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb3",
+
+
+
+    platform: "LinkedIn",
+
+
+
+    displayName: "70+ \"Adeeb Mohammed\" profiles",
+
+
+
+    snippet: "Adeeb Mohammed, CISA, CPA, CCSP. Experienced Risk Manager with expertise in Information Technology Audits, Cyber Security Audits and Risk Management.",
+
+
+
+    urlLike: "www.linkedin.com › pub › dir › Mohammed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar3",
+
+
+
+    missingNote: "Missing: dc | Show results with: dc"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb4",
+
+
+
+    platform: "George Mason University",
+
+
+
+    displayName: "List Of Groups - Mason360 - George Mason University",
+
+
+
+    snippet: "We also serve as a liaison between the D.C Metro area (VA, MD, and D.C) and ... Contact: Nahian Islam, Adeeb Khaja Mohamed. Mission COSA serves as an ...",
+
+
+
+    urlLike: "mason360.gmu.edu › club_signup",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar4"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb5",
+
+
+
+    platform: "DC.gov",
+
+
+
+    displayName: "fy25 ytd schedule a",
+
+
+
+    snippet: "Batko,Matthew T. 03, 6, PS0001, 115934, 21215.922, 1, Reg, 17.43611111, N. 261, 800028, 80064, Filled, 00003445, OFFICER, Batshon,Adeeb S ...",
+
+
+
+    urlLike: "mpdc.dc.gov › publication › attachments",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar5"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb6",
+
+
+
+    platform: "LinkedIn",
+
+
+
+    displayName: "Adeeb Mohammed - Director, Governance Risk and ...",
+
+
+
+    snippet: "Proven leader in enterprise security compliance, certifications, and audit strategy, with expertise in building and scaling global Governance, Risk, ...",
+
+
+
+    urlLike: "www.linkedin.com › in › adeeb-mohammed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "San Francisco Bay Area",
+
+
+
+    imageKey: "avatar6",
+
+
+
+    followers: "450+",
+
+
+
+    currentRole: "Director, Governance Risk and Compliance",
+
+
+
+    currentCompany: "Barracuda"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb7",
+
+
+
+    platform: "The George Washington University",
+
+
+
+    displayName: "Resident Fellowship Placements",
+
+
+
+    snippet: "Adeeb Al-Qatami, Temple University, Pennsylvania. Alex Asser, George ... George Washington University, D.C.. M. Cristina Hatara, George Washington ...",
+
+
+
+    urlLike: "medicineresidency.smhs.gwu.edu › resident-fello...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar7"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb8",
+
+
+
+    platform: "The Org",
+
+
+
+    displayName: "Adeeb Mohammed - Director, Global Risk And ...",
+
+
+
+    snippet: "Adeeb Mohammed possesses a robust background in risk and compliance, currently serving as Director of Global Risk and Compliance at Barracuda since ...",
+
+
+
+    urlLike: "theorg.com › barracuda-networks › org-chart › a...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar8",
+
+
+
+    missingNote: "Missing: dc | Show results with: dc",
+
+
+
+    sideImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYryRy1eB976unNyurOMcdvJnhtDE7Vqt8rhHvUgk&usqp=CAE&s"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb9",
+
+
+
+    platform: "WordPress.com",
+
+
+
+    displayName: "Author: Mohammed al-Adeeb - Curiously Strong Lemonade",
+
+
+
+    snippet: "Feb 21, 2024 — I studied EECS at Berkeley and Business at Georgetown. I spent a stint in DC applying my skills to problems abroad, and moved back to SF in 2013 ...",
+
+
+
+    urlLike: "limonadahilow.wordpress.com › author › malade...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar9",
+
+
+
+    sideImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPY_1oPQ5vCmvhs9MfBEJAGoIJW0ocPOYcUYcV3CBnTByE4q_yMhos&usqp=CAE&s"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb10",
+
+
+
+    platform: "WordPress.com",
+
+
+
+    displayName: "Author: Mohammed al-Adeeb - Curiously Strong Lemonade",
+
+
+
+    snippet: "Posts by Mohammed al-Adeeb. Blog about technology, data science, and life in Washington DC. Sharing insights on analytics, programming, and career development.",
+
+
+
+    urlLike: "limonadahilow.wordpress.com › author › maladeeb",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar10",
+
+
+
+    sideImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPY_1oPQ5vCmvhs9MfBEJAGoIJW0ocPOYcUYcV3CBnTByE4q_yMhos&usqp=CAE&s"
+
+
+
+  },
+
+
+
+  // Page 2
+
+
+
+  {
+
+
+
+    id: "adeeb11",
+
+
+
+    platform: "IEEE Xplore",
+
+
+
+    displayName: "Performance Analysis of Bidirectional DC–DC Converters for ...",
+
+
+
+    snippet: "This paper presents the performance analysis and comparison of two types of bidirectional dc-dc converters-cascaded buck-boost capacitor in the middle and ...",
+
+
+
+    urlLike: "ieeexplore.ieee.org › servlet › Login › similar",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar11"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb12",
+
+
+
+    platform: "Council of the District of Columbia",
+
+
+
+    displayName: "Metropolitan Police Department, Washington.D.C.",
+
+
+
+    snippet: "PDF. DIR D C POLICE. 1. Executive Office of the Chief of. Police. OGBEIDE ... MOHAMED. OFFICER. 1. Patrol Services Bureau. IHEJIRIKA. DOMINIC. OFFICER. 1. Patrol ...",
+
+
+
+    urlLike: "dccouncil.gov › 2017/05 › mpddd",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar12"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb13",
+
+
+
+    platform: "X",
+
+
+
+    displayName: "The past week in Washington DC at the IMF & World Bank ...",
+
+
+
+    snippet: "2 likes · 3 months ago. Adeeb Ahamed (@adeeb_ahamed). 146 views. The past week in Washington ... Mohamed Abdelbary, Group CEO of Abu Dhabi Islamic Bank; Adnan ...",
+
+
+
+    urlLike: "x.com › adeeb_ahamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar13"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb14",
+
+
+
+    platform: "The University of Texas Medical Branch",
+
+
+
+    displayName: "Muhammad Ubaid Hafeez, MBBS, MD",
+
+
+
+    snippet: "... D. C., May 1 2025, In: Journal of neurointerventional surgery. 17, 5 ... Adeeb, N., Musmar, B., Salim, H. A., Aslan, A., Alla, A., Cancelliere, N. M. ...",
+
+
+
+    urlLike: "researchexperts.utmb.edu › persons › muhamma...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Galveston, TX",
+
+
+
+    imageKey: "avatar14"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb15",
+
+
+
+    platform: "The Virginia Department of Agriculture and Consumer Services",
+
+
+
+    displayName: "office-of-hemp-enforcement-registrations.pdf",
+
+
+
+    snippet: "PDF. May 20, 2025 — 23323 Mohamed Musa M Alzokari samalzokari@gmail.com. 2/19/25. 2/19/26 ... DC on Wheels LLC. DC on Wheels. 8218 Seminole Trail. Ruckersville.",
+
+
+
+    urlLike: "www.vdacs.virginia.gov › pdf › office-of-h...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Virginia",
+
+
+
+    imageKey: "avatar15"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb16",
+
+
+
+    platform: "dcappeals.gov",
+
+
+
+    displayName: "NOTICE OF THE July 2021 BAR EXAMINATION RESULTS ...",
+
+
+
+    snippet: "PDF. Nov 2, 2021 — Individuals whose names do not appear on this list should be aware that pursuant to D.C. App. ... Iman Abdulkadir Mohamed. Anahita Mohtasham ...",
+
+
+
+    urlLike: "admissions.dcappeals.gov › jul-2021-exa...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar16"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb17",
+
+
+
+    platform: "unrwa usa",
+
+
+
+    displayName: "Search 2025 DC Gaza 5K",
+
+
+
+    snippet: "View Top Individual - 'Adnan Mohamed' fundraiser page using image · Adnan ... View Top Individual - 'Adeeb Abed' fundraiser page using image. Adeeb Abed.",
+
+
+
+    urlLike: "getinvolved.unrwausa.org › event › search",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar17"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb18",
+
+
+
+    platform: "Arab Journals Platform",
+
+
+
+    displayName: "Information Sciences Letters | Vol 12 | Iss 12",
+
+
+
+    snippet: "by B Klara · 2023 — ... Adeeb Deab Hamadneh, and Khitam Ahmad Bani omar. PDF · Breaking Barriers: A ... Mohamed A. Hafez, Zakaria Che Muda, Nur Irfah Bte. Mohd, and Nazaruddin A ...",
+
+
+
+    urlLike: "digitalcommons.aaru.edu.jo › isl › vol12 › iss12",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar18"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb19",
+
+
+
+    platform: "Jefferson Digital Commons",
+
+
+
+    displayName: "\"Factors Influencing Immediate Post-Angiographic Occlusion ...\"",
+
+
+
+    snippet: "by MA Essibayi · 2025 — Muhammed Amir Essibayi · Mohamed Sobhi Jabal · Hasan Jamil · Hamza Adel Salim · Basel Musmar · Nimer Adeeb · Mahmoud Dibas · Nicole M. Cancelliere",
+
+
+
+    urlLike: "jdc.jefferson.edu › tjuhpapers",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Philadelphia, PA",
+
+
+
+    imageKey: "avatar19"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb20",
+
+
+
+    platform: "Virginia Commonwealth University",
+
+
+
+    displayName: "2025 VCU Commencement program",
+
+
+
+    snippet: "May 10, 2025 — ... Mohamed. Computer Science. Richmond, Virginia. Desta, Samuel Woldu ... Adeeb. Business. Herndon, Virginia. Asbell, Tyler Keith. Finance.",
+
+
+
+    urlLike: "commencement.vcu.edu › media › virtual-swag-",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Richmond, VA",
+
+
+
+    imageKey: "avatar20"
+
+
+
+  },
+
+
+
+  // Page 3
+
+
+
+  {
+
+
+
+    id: "adeeb21",
+
+
+
+    platform: "MDPI",
+
+
+
+    displayName: "Bioengineered Organoids Offer New Possibilities for Liver ...",
+
+
+
+    snippet: "by A Jabri · 2024 · Cited by 13 — He is a Professor of Anatomy and cell biology in the College of Medicine at Alfaisal University. He is the Vice Dean of Graduate Studies and Research as well as ...",
+
+
+
+    urlLike: "www.mdpi.com › ...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar21"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb22",
+
+
+
+    platform: "World Bank",
+
+
+
+    displayName: "Participant List",
+
+
+
+    snippet: "Oct 29, 2024 — ... DC. United States. Collins. Adomako-. Mensah. Member of Parliament,. Board ... Mohamed. Ali. Executive Director. Somalia None-State Actors.",
+
+
+
+    urlLike: "www.worldbank.org › external › annualmeeting-2",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar22"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb23",
+
+
+
+    platform: "DC.gov",
+
+
+
+    displayName: "DC Government Employee Listing",
+
+
+
+    snippet: "Mar 20, 2017 — ... Mohamed. Career Service - Reg Appt. Behavior Technician. 05 ... Adeeb. Career Service - Reg Appt. OFFICER. 01. 81168.000000. 3/22/2004. OSSE DOT ... 780 pages",
+
+
+
+    urlLike: "dchr.dc.gov › dc › dchr › publication › attachments",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar23"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb24",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "The 6th India Arab Partnership Conference organized by ...",
+
+
+
+    snippet: "Photo by Adeeb Ahamed on November 01, 2025. May be an image of one ... The past week in Washington DC at the IMF & World Bank Annual ...",
+
+
+
+    urlLike: "Instagram · adeebahamedofficial",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar24",
+
+
+
+    followers: "210+ likes"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb25",
+
+
+
+    platform: "University of Rochester Medical Center",
+
+
+
+    displayName: "Physician Name Phone Fax Street Suite City State Zip ...",
+
+
+
+    snippet: "... ADEEB,NAGUI E. 585-798-0286. 585-798-4584. 711 PARK AVE. STE 202A, PO BOX 516 ... DC. 20016-3622. AGRAWAL,MURLI M. 478-272-1210. 478-277-2714. 1826 VETERANS ...",
+
+
+
+    urlLike: "www.urmc.rochester.edu › documents › SMH_Ph...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar25"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb26",
+
+
+
+    platform: "dcappeals.gov",
+
+
+
+    displayName: "NOTICE OF THE July 2021 BAR EXAMINATION RESULTS ...",
+
+
+
+    snippet: "Nov 2, 2021 — Individuals whose names do not appear on this list should be aware that pursuant to D.C. App. ... Iman Abdulkadir Mohamed. Anahita Mohtasham ...",
+
+
+
+    urlLike: "admissions.dcappeals.gov › jul-2021-exa...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar26"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb27",
+
+
+
+    platform: "Facebook",
+
+
+
+    displayName: "The past week in Washington DC at the IMF & World Bank ...",
+
+
+
+    snippet: "Mashallah adeeb bhai good to see u. 4mo. Profile photo of Noorul. Noorul ... Mohamed Mansaray Director of search Bank of Sierra Leone, Mr.",
+
+
+
+    urlLike: "Facebook · Adeeb Ahamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar27",
+
+
+
+    followers: "330+ reactions"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb28",
+
+
+
+    platform: "Doximity",
+
+
+
+    displayName: "Dr. Adeeb Bou-Saba, MD – Baltimore, MD | Internal Medicine",
+
+
+
+    snippet: "Dr. Adeeb Bou-Saba, MD is a board certified internist in Baltimore, Maryland. He is affiliated with MedStar Good Samaritan Hospital.",
+
+
+
+    urlLike: "www.doximity.com › ... › Maryland › Baltimore",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Baltimore, MD",
+
+
+
+    imageKey: "avatar28"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb29",
+
+
+
+    platform: "Reuters",
+
+
+
+    displayName: "Maldives ex-VP Adeeb jailed for plotting president's assassination",
+
+
+
+    snippet: "Adeeb, 34, was arrested on Oct. 24 after an initial probe. Parliament impeached him on Nov. 5. Adeeb's sentencing came a week after exiled former leader Mohamed ...",
+
+
+
+    urlLike: "www.reuters.com › article › world › maldives-ex...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar29"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb30",
+
+
+
+    platform: "The Virginia Department of Agriculture and Consumer Services (.gov)",
+
+
+
+    displayName: "office-of-hemp-enforcement-registrations.pdf",
+
+
+
+    snippet: "May 20, 2025 — 23323 Mohamed Musa M Alzokari samalzokari@gmail.com. 2/19/25. 2/19/26 ... DC on Wheels LLC. DC on Wheels. 8218 Seminole Trail. Ruckersville.",
+
+
+
+    urlLike: "www.vdacs.virginia.gov › pdf › office-of-h...",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Virginia",
+
+
+
+    imageKey: "avatar30"
+
+
+
+  },
+
+
+
+  // Page 4
+
+
+
+  {
+
+
+
+    id: "adeeb31",
+
+
+
+    platform: "The Most Influential Indian Muslims of 2025",
+
+
+
+    displayName: "Muhammad Adeeb - One of the most influential Indian ...",
+
+
+
+    snippet: "Muhammad Adeeb has been recognized as one of the most influential Indian Muslims of 2025. His contributions to society and leadership have been highly noted ...",
+
+
+
+    urlLike: "www.the100indianmuslims.com › Muhammad-A",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "India",
+
+
+
+    imageKey: "avatar31"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb32",
+
+
+
+    platform: "Amnesty International USA",
+
+
+
+    displayName: "Missing lawyer at risk of torture",
+
+
+
+    snippet: "Oct 24, 2025 — Urgent action needed for missing lawyer. Reports indicate high risk of torture and ill-treatment. Amnesty International is monitoring the situation in D.C. ...",
+
+
+
+    urlLike: "www.amnestyusa.org › uaa",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar32"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb32b",
+
+
+
+    platform: "Carleton College",
+
+
+
+    displayName: "Adeeb Mohamed - Carleton College Profile",
+
+
+
+    snippet: "Academic and professional profile for Adeeb Mohamed at Carleton College. Information on research interests, course involvement, and campus activities in Northfield, MN.",
+
+
+
+    urlLike: "www.carleton.edu › profiles › adeeb-mohamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Northfield, MN",
+
+
+
+    imageKey: "avatar32b"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb32c",
+
+
+
+    platform: "U.S. Department of State",
+
+
+
+    displayName: "Official Travel and Passport Information",
+
+
+
+    snippet: "Information regarding official travel, passport services, and international affairs. Managed by the U.S. Department of State. DC based offices providing assistance to citizens and officials.",
+
+
+
+    urlLike: "www.state.gov › travel-information",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar32c"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb32d",
+
+
+
+    platform: "Japanese Inter Systems",
+
+
+
+    displayName: "Japanese Inter Systems - Technology Solutions",
+
+
+
+    snippet: "Providing cutting-edge technology and systems integration services. Japanese Inter Systems specializes in data management, software development, and international consulting.",
+
+
+
+    urlLike: "www.japaneseintersystems.com › about",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar32d"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb32e",
+
+
+
+    platform: "Google Scholar",
+
+
+
+    displayName: "Mohamed M. Salem - Google Scholar",
+
+
+
+    snippet: "Citations of research papers by Mohamed M. Salem. Topics include cardiology, medical research, and health sciences. Based in the Washington DC area.",
+
+
+
+    urlLike: "scholar.google.com › citations › user=msalem",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar32"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb33",
+
+
+
+    platform: "The Org",
+
+
+
+    displayName: "Adeeb Ahamed - Managing Director",
+
+
+
+    snippet: "Adeeb Ahamed is the Managing Director at LuLu Financial Group. View their professional profile and team at The Org.",
+
+
+
+    urlLike: "theorg.com › org › lulu-financial-group › adeeb-ahamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar33"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb34",
+
+
+
+    platform: "AHA Journals",
+
+
+
+    displayName: "First-Line Stent Retriever Versus Contact Aspiration - PLATO",
+
+
+
+    snippet: "by M Salem · 2023 — This study compares first-line stent retriever and contact aspiration in patients with large vessel occlusion stroke. Published in Stroke: Vascular and Interventional Neurology.",
+
+
+
+    urlLike: "www.ahajournals.org › abs › SVIN.123.001004",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar34"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb35",
+
+
+
+    platform: "Freedom House",
+
+
+
+    displayName: "Maldives: Freedom in the World 2021 Country Report",
+
+
+
+    snippet: "Freedom in the World 2021 report for Maldives. Mentions of business leaders and civil society. Adeeb Ahamed's role in the region's economy.",
+
+
+
+    urlLike: "freedomhouse.org › country › freedom-world › 2021",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "",
+
+
+
+    imageKey: "avatar35"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb36",
+
+
+
+    platform: "Instagram",
+
+
+
+    displayName: "Adeeb Ahamed (@AdeebAhamedOfficial) • Instagram",
+
+
+
+    snippet: "Adeeb Ahamed. Entrepreneur | Philanthropist | Managing Director. Follow for updates on business and community initiatives.",
+
+
+
+    urlLike: "www.instagram.com › adeebahamedofficial",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar36"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb37",
+
+
+
+    platform: "The George Washington University",
+
+
+
+    displayName: "Adeeb Mohamed - George Washington University",
+
+
+
+    snippet: "Student profile for Adeeb Mohamed. Pursuing studies in international relations and public policy at GWU in Washington DC.",
+
+
+
+    urlLike: "www.gwu.edu › student-directory › adeeb-mohamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar37"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb38",
+
+
+
+    platform: "GitHub",
+
+
+
+    displayName: "Adeeb Mohamed - Engineering Portfolio",
+
+
+
+    snippet: "GitHub profile for Adeeb Mohamed. Repositories include projects in data science, web development, and automation.",
+
+
+
+    urlLike: "github.com › adeebmohamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar38"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb39",
+
+
+
+    platform: "Medium",
+
+
+
+    displayName: "Adeeb Mohamed - Career Path",
+
+
+
+    snippet: "Articles on navigating the tech industry and building a career in data science. Written by Adeeb Mohamed.",
+
+
+
+    urlLike: "medium.com › @adeebmohamed › career-path",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar39"
+
+
+
+  },
+
+
+
+  {
+
+
+
+    id: "adeeb40",
+
+
+
+    platform: "About.me",
+
+
+
+    displayName: "Adeeb Mohamed - Professional Summary",
+
+
+
+    snippet: "Professional summary for Adeeb Mohamed. Highlights of experience in project management and data analytics.",
+
+
+
+    urlLike: "about.me › adeebmohamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+
+
+    imageKey: "avatar40"
+
+
+
+  },
+
+
+
+  // Page 5
+
+
+
+  {
+
+
+
+    id: "adeeb41",
+
+
+
+    platform: "Dev.to",
+
+
+
+    displayName: "Adeeb Mohamed - DEV Community",
+
+
+
+    snippet: "Articles and posts on data analytics, Python programming, and machine learning. Contributing to the developer community with tutorials and insights.",
+
+
+
+    urlLike: "dev.to › adeebmohamed",
+
+
+
+    discoverability: "High",
+
+
+
+    footprint: "Present",
+
+
+
+    race: "African American",
+
+
+
+    location: "Washington, DC",
+
+    imageKey: "avatar41"
+
+  },
+
+  {
+
+    id: "adeeb42",
+
+    platform: "Hashnode",
+
+    displayName: "Adeeb Mohamed - Hashnode Blog",
+
+    snippet: "Technical blog on data science, analytics, and programming. Writing about machine learning, Python, SQL, and data visualization techniques.",
+
+    urlLike: "adeebmohamed.hashnode.dev",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar42"
+
+  },
+
+  {
+
+    id: "adeeb43",
+
+    platform: "Substack",
+
+    displayName: "Adeeb Mohamed - Substack Newsletter",
+
+    snippet: "Newsletter on data analytics and technology trends. Weekly insights on data science, machine learning, and career development in analytics.",
+
+    urlLike: "adeebmohamed.substack.com",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar43"
+
+  },
+
+  {
+
+    id: "adeeb44",
+
+    platform: "Ghost",
+
+    displayName: "Adeeb Mohamed - Ghost Blog",
+
+    snippet: "Independent blog platform sharing articles on data analytics and technology. Long-form content on data science, programming, and career insights.",
+
+    urlLike: "adeebmohamed.ghost.io",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar44"
+
+  },
+
+  {
+
+    id: "adeeb45",
+
+    platform: "TinyLetter",
+
+    displayName: "Adeeb Mohamed - TinyLetter",
+
+    snippet: "Email newsletter sharing thoughts on data analytics and technology. Monthly updates on data science projects, tools, and industry trends.",
+
+    urlLike: "tinyletter.com › adeebmohamed",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar45"
+
+  },
+
+  {
+
+    id: "adeeb46",
+
+    platform: "Mailchimp",
+
+    displayName: "Adeeb Mohamed - Mailchimp Campaigns",
+
+    snippet: "Email marketing campaigns and newsletters on data analytics topics. Sharing resources, tutorials, and updates with subscribers interested in data science.",
+
+    urlLike: "mailchimp.com › campaigns › adeebmohamed",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar46"
+
+  },
+
+  {
+
+    id: "adeeb47",
+
+    platform: "Calendly",
+
+    displayName: "Adeeb Mohamed - Calendly",
+
+    snippet: "Schedule a meeting with Adeeb Mohamed. Available for consultations on data analytics, career advice, and data science projects. Based in Washington DC.",
+
+    urlLike: "calendly.com › adeebmohamed",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar47"
+
+  },
+
+  {
+
+    id: "adeeb48",
+
+    platform: "Zoom",
+
+    displayName: "Adeeb Mohamed - Zoom Profile",
+
+    snippet: "Zoom profile for virtual meetings and consultations. Available for data analytics workshops, career coaching, and technology discussions.",
+
+    urlLike: "zoom.us › profile › adeebmohamed",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar48"
+
+  },
+
+  {
+
+    id: "adeeb49",
+
+    platform: "Google Sites",
+
+    displayName: "Adeeb Mohamed - Google Sites",
+
+    snippet: "Personal website built with Google Sites. Showcasing data analytics projects, professional experience, and contact information for Washington DC area.",
+
+    urlLike: "sites.google.com › view › adeebmohamed",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar49"
+
+  },
+
+  {
+
+    id: "adeeb50",
+
+    platform: "Weebly",
+
+    displayName: "Adeeb Mohamed - Weebly Site",
+
+    snippet: "Professional website created with Weebly. Portfolio of data analytics projects, services offered, and professional background. Washington DC based professional.",
+
+    urlLike: "adeebmohamed.weebly.com",
+
+    discoverability: "High",
+
+    footprint: "Present",
+
+    race: "African American",
+
+    location: "Washington, DC",
+
+    imageKey: "avatar50"
+  }
+];
+
+export const RESULTS_Tremayne_Washington: SimResult[] = [
+  {
+    id: "tremayne1",
+    platform: "LinkedIn",
+    displayName: "20+ Results for \"Tremayne Washington\"",
+    snippet: "Tremayne Washington. Retired - Lead Software Developer at Swagelok · Tremayne Washington. Barrister at Farringdon Chambers · Tremayne Washington. ...Read more",
+    urlLike: "www.linkedin.com › pub › dir › Tremayne › Washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-linkedin-dir"
+  },
+  {
+    id: "tremayne5",
+    platform: "LinkedIn",
+    displayName: "Tremayne Washington - Chicago Investment Partners",
+    snippet: "290+ followers · Chicago, Illinois, United States · Chicago Investment Partners · Experience: Chicago Investment Partners · Education: University of Michigan · Location: Chicago · 340+ connections on LinkedIn. View Tremayne Washington's profile on LinkedIn, ...",
+    urlLike: "LinkedIn · Tremayne Washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    followers: "290+",
+    imageKey: "tremayne-linkedin-profile"
+  },
+  {
+    id: "tremayne6",
+    platform: "Facebook",
+    displayName: "Tremayne Washington in people",
+    snippet: "People named Tremayne Washington ; Tremayne Washington. Owner at Deer Rock Knives LLC · Lives in ; Tremayne Washington. Lives in Greensburg, Indiana ; Tremayne Washington. Business ...Read more",
+    urlLike: "www.facebook.com › public › Tremayne-Washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-facebook"
+  },
+  {
+    id: "tremayne2",
+    platform: "Howard, Kohn, Sprague & FitzGerald, LLP",
+    displayName: "Tremayne Washington",
+    snippet: "Aug 22, 2024 — Attorney Washington was admitted to the Connecticut bar in 2001 and joined the firm in 2004. He is also admitted to the Federal bar for the ...Read more",
+    urlLike: "hksflaw.com › People",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Connecticut",
+    imageKey: "tremayne-hksf"
+  },
+  {
+    id: "tremayne3",
+    platform: "Instagram",
+    displayName: "Tremayne Washington (@tremayne_wash) • Instagram",
+    snippet: "1.2K+ followers · 185 following · 124 posts · @tremayne_wash: Chicago | Finance | UMich Alum | Living life one day at a time",
+    urlLike: "Instagram · tremayne_wash",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    followers: "1.6K+",
+    imageKey: "tremayne-insta"
+  },
+  {
+    id: "tremayne4",
+    platform: "Lafayette College Athletics",
+    displayName: "Tremayne Washington - 2011 Football Roster",
+    snippet: "Lafayette College Athletics · 2011 Football Roster · 69 Tremayne Washington. Pos. OL. Yr. Senior. Ht. 6-4. Weight 290. Hometown Belvidere, N.J.. High School Belvidere.Read more",
+    urlLike: "goleopards.com › sports › roster › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Belvidere, N.J.",
+    imageKey: "tremayne-football"
+  },
+  {
+    id: "tremayne7",
+    platform: "Oswego State Athletics",
+    displayName: "Tremayne Washington - Men's Ice Hockey",
+    snippet: "1 Tremayne Washington · Class Freshman · Position G · Height 5-11 · Weight 185 · Hometown Sauquoit, N.Y.. Bio; Stats. Biography. Statistics. Season Statistics ...Read more",
+    urlLike: "oswegolakers.com › mens-ice-hockey › roster",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Sauquoit, N.Y.",
+    imageKey: "tremayne-hockey"
+  },
+  {
+    id: "tremayne8",
+    platform: "Rock Harbor Covenant Church",
+    displayName: "Meet Our Staff",
+    snippet: "Our Pastors. Senior Pastor. Tremayne Washington · College and Associate Pastor. Scott Buetzow ; Our Managers. Business Manager. Katie Fenner · Office Manager. Bob Simmons.Read more",
+    urlLike: "rockharboronline.com › meet-our-staff",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-church"
+  },
+  {
+    id: "tremayne9",
+    platform: "CARLI Digital Collections",
+    displayName: "Tremayne Washington Interview, 2019 - Audio",
+    snippet: "An interview with Lead Pastor Tremayne Washington at Rock Harbor Church. Washington discusses his journey in the Covenant Denomination, involvement in Covenant churches, ...Read more",
+    urlLike: "collections.carli.illinois.edu › digital › npu_oracol",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-interview"
+  },
+  // Page 2
+  {
+    id: "tremayne12",
+    platform: "Avvo",
+    displayName: "Tremayne Washington - Attorney Profiles",
+    snippet: "Tremayne Washington is a licensed attorney with expertise in corporate law and civil litigation. 4.8 stars from 120+ client reviews. Chicago, Illinois.",
+    urlLike: "avvo.com › attorney › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-avvo"
+  },
+  {
+    id: "tremayne13",
+    platform: "Justia",
+    displayName: "Tremayne Washington - Lawyer Directory",
+    snippet: "Tremayne Washington's profile on Justia. Licensed in Illinois and Connecticut. Specializes in business and contract law. View profile, ratings, and case results.",
+    urlLike: "justia.com › lawyers › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-justia"
+  },
+  {
+    id: "tremayne14",
+    platform: "FindLaw",
+    displayName: "Tremayne Washington - Legal Professional",
+    snippet: "Find Tremayne Washington on FindLaw's lawyer directory. Practice areas include corporate transactions, employment law, and litigation. Contact information available.",
+    urlLike: "findlaw.com › lawyer › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-findlaw"
+  },
+  {
+    id: "tremayne15",
+    platform: "Illinois State Bar Association",
+    displayName: "Tremayne Washington - Bar Registration",
+    snippet: "Tremayne Washington, Attorney at Law. Licensed to practice in Illinois. Member of the Illinois State Bar Association since 2001.",
+    urlLike: "isba.org › find-legal-help › attorney › washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Illinois",
+    imageKey: "tremayne-isba"
+  },
+  {
+    id: "tremayne16",
+    platform: "Connecticut Bar Association",
+    displayName: "Tremayne Washington - Member Directory",
+    snippet: "Tremayne Washington is a Connecticut bar member since 2001 with a strong record in professional responsibility and client service.",
+    urlLike: "ctbar.org › member-directory › washington-t",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Connecticut",
+    imageKey: "tremayne-ctbar"
+  },
+  {
+    id: "tremayne17",
+    platform: "LinkedIn",
+    displayName: "Tremayne Washington - Legal Consultant",
+    snippet: "Tremayne Washington. Legal Consultant specializing in corporate governance and compliance. 1.2K connections. Chicago, Illinois.",
+    urlLike: "linkedin.com › in › tremayne-washington-legal",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-linkedin-legal"
+  },
+  {
+    id: "tremayne18",
+    platform: "LinkedIn",
+    displayName: "Tremayne Washington - Business Development",
+    snippet: "Tremayne Washington. Vice President of Business Development at Turner Industries. 890+ connections. Chicago area.",
+    urlLike: "linkedin.com › in › tremayne-washington-dev",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-linkedin-biz"
+  },
+  {
+    id: "tremayne19",
+    platform: "Facebook People Search",
+    displayName: "Tremayne Washington - People Results",
+    snippet: "Multiple people named Tremayne Washington found. See profiles from Chicago, Illinois; Detroit, Michigan; Atlanta, Georgia; and more.",
+    urlLike: "facebook.com › people › Tremayne-Washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-facebook-search"
+  },
+  {
+    id: "tremayne20",
+    platform: "Whitepages",
+    displayName: "Tremayne Washington - People Search",
+    snippet: "Tremayne Washington found in Chicago, IL. View contact information, background report, and public records.",
+    urlLike: "whitepages.com › name › Tremayne-Washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-whitepages"
+  },
+  // Page 3
+  {
+    id: "tremayne22",
+    platform: "Spokeo",
+    displayName: "Tremayne Washington - Background Report",
+    snippet: "Background information for Tremayne Washington. Public records, contact details, and profile overview. Located in Chicago area.",
+    urlLike: "spokeo.com › people › Tremayne-Washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-spokeo"
+  },
+  {
+    id: "tremayne23",
+    platform: "MyLife",
+    displayName: "Tremayne Washington - Public Profile",
+    snippet: "Tremayne Washington's profile on MyLife. Public background information and verified contact data.",
+    urlLike: "mylife.com › people › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-mylife"
+  },
+  {
+    id: "tremayne25",
+    platform: "Chicago Chamber of Commerce",
+    displayName: "Tremayne Washington - Business Member",
+    snippet: "Tremayne Washington listed as business owner and member of Chicago Chamber of Commerce. Member since 2010.",
+    urlLike: "chicagochamber.org › member-directory › washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-chamber"
+  },
+  {
+    id: "tremayne26",
+    platform: "Better Business Bureau",
+    displayName: "Tremayne Washington - Business Contact",
+    snippet: "BBB listing for Tremayne Washington's business operations. Good standing with local business community.",
+    urlLike: "bbb.org › business › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-bbb"
+  },
+  {
+    id: "tremayne28",
+    platform: "University of Michigan Alumni",
+    displayName: "Tremayne Washington - Class of 2015",
+    snippet: "Tremayne Washington, MBA Graduate 2015. Listed in UMich alumni directory. Currently in business and finance sector.",
+    urlLike: "michiganapps.org › alumni › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-alumni-umich"
+  },
+  {
+    id: "tremayne31",
+    platform: "Northwestern University Alumni Network",
+    displayName: "Tremayne Washington - Kellogg MBA",
+    snippet: "Tremayne Washington, Kellogg School of Management MBA 2012. Alumni profile with current career information.",
+    urlLike: "kellogg.northwestern.edu › alumni › washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-alumni-kellogg"
+  },
+  {
+    id: "tremayne32",
+    platform: "Harvard Business Review",
+    displayName: "Tremayne Washington - Contributor",
+    snippet: "Tremayne Washington is a contributing author on leadership and organizational development topics.",
+    urlLike: "hbr.org › author › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-hbr"
+  },
+  {
+    id: "tremayne33",
+    platform: "Forbes",
+    displayName: "Tremayne Washington - Profile & Articles",
+    snippet: "Tremayne Washington's Forbes profile. Articles on business strategy, investment trends, and corporate leadership.",
+    urlLike: "forbes.com › profile › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-forbes"
+  },
+  {
+    id: "tremayne34",
+    platform: "Chicago Tribune - Business Section",
+    displayName: "Tremayne Washington - Business News",
+    snippet: "Featured: Chicago business leader Tremayne Washington discusses economic trends and community investment. March 2024.",
+    urlLike: "chicagotribune.com › business › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-tribune"
+  },
+  // Page 4
+  {
+    id: "tremayne36",
+    platform: "Crain's Chicago Business",
+    displayName: "Tremayne Washington - Notable Business Leader",
+    snippet: "Tremayne Washington featured in Crain's as emerging leader in financial services. Profile and interview.",
+    urlLike: "crainsChicago.com › news › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-crains"
+  },
+  {
+    id: "tremayne37",
+    platform: "Entrepreneur Magazine",
+    displayName: "Tremayne Washington - Business Owner Profile",
+    snippet: "Entrepreneur profile: Tremayne Washington on building and scaling his consulting firm. Interview and case study.",
+    urlLike: "entrepreneur.com › profile › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-entrepreneur"
+  },
+  {
+    id: "tremayne38",
+    platform: "TED - Speakers Network",
+    displayName: "Tremayne Washington - Speaker Profile",
+    snippet: "Tremayne Washington speaks on leadership development and organizational change. Available for conferences and corporate events.",
+    urlLike: "ted.com › speakers › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-ted"
+  },
+  {
+    id: "tremayne39",
+    platform: "Toastmasters International",
+    displayName: "Tremayne Washington - Distinguished Toastmaster",
+    snippet: "Tremayne Washington is a Distinguished Toastmaster speaker and club leader in Chicago region.",
+    urlLike: "toastmasters.org › member › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-toastmasters"
+  },
+  {
+    id: "tremayne40",
+    platform: "Urban Land Institute",
+    displayName: "Tremayne Washington - Member Directory",
+    snippet: "Tremayne Washington, member and real estate development expert. Contributes to ULI Chicago initiatives.",
+    urlLike: "uli.org › chicago › member › washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-uli"
+  },
+  {
+    id: "tremayne41",
+    platform: "National Association of Corporate Directors",
+    displayName: "Tremayne Washington - Board Member",
+    snippet: "Tremayne Washington serves on multiple corporate boards and is registered with NACD.",
+    urlLike: "nacdonline.org › member › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-nacd"
+  },
+  {
+    id: "tremayne42",
+    platform: "Executive Leadership Council",
+    displayName: "Tremayne Washington - Member Profile",
+    snippet: "Tremayne Washington is an Executive Leadership Council member dedicated to empowering Black leaders in business.",
+    urlLike: "elcinfo.com › member › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-elc"
+  },
+  {
+    id: "tremayne43",
+    platform: "100 Black Men of America",
+    displayName: "Tremayne Washington - Organization Member",
+    snippet: "Tremayne Washington is a member of 100 Black Men of America - Chicago Chapter and mentor.",
+    urlLike: "100blackmen.org › chicago › member › washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-100bm"
+  },
+  {
+    id: "tremayne44",
+    platform: "Links, Incorporated",
+    displayName: "Tremayne Washington - Affiliated Member",
+    snippet: "Tremayne Washington's professional network profile through Links, Inc., a national professional organization.",
+    urlLike: "linksinc.org › member › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-links"
+  },
+  {
+    id: "tremayne45",
+    platform: "Black Enterprise Magazine",
+    displayName: "Tremayne Washington - Featured Executive",
+    snippet: "Black Enterprise profiles Tremayne Washington as rising executive in corporate finance. Interview and career trajectory.",
+    urlLike: "blackenterprise.com › profile › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-blackent"
+  },
+  // Page 5
+  {
+    id: "tremayne46",
+    platform: "Fast Company",
+    displayName: "Tremayne Washington - Most Creative People",
+    snippet: "Tremayne Washington recognized as innovative business leader reshaping corporate culture and strategy.",
+    urlLike: "fastcompany.com › profile › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-fastco"
+  },
+  {
+    id: "tremayne47",
+    platform: "Inc. Magazine",
+    displayName: "Tremayne Washington - Founder Profile",
+    snippet: "How Tremayne Washington built and scaled his company from startup to $10M revenue. Founder interview and lessons learned.",
+    urlLike: "inc.com › profile › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-inc"
+  },
+  {
+    id: "tremayne48",
+    platform: "Marquis Who's Who",
+    displayName: "Tremayne Washington - Biographical Entry",
+    snippet: "Tremayne Washington is recognized in Marquis Who's Who for his accomplishments in business and community service.",
+    urlLike: "marquiswhoswho.com › profile › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-marquis"
+  },
+  {
+    id: "tremayne49",
+    platform: "LinkedIn",
+    displayName: "Tremayne Washington - Chief Marketing Officer",
+    snippet: "Tremayne Washington, CMO at Fortune 500 technology company. 2.3K connections. 15 years in marketing leadership.",
+    urlLike: "linkedin.com › in › tremayne-washington-cmo",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-linkedin-cmo"
+  },
+  {
+    id: "tremayne50",
+    platform: "Twitter",
+    displayName: "Tremayne Washington (@TremayneW) - Tweet Results",
+    snippet: "Tremayne Washington's Twitter. Tweets about leadership, business strategy, and professional development. 12K followers.",
+    urlLike: "twitter.com › TremayneW",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-twitter"
+  },
+  {
+    id: "tremayne51",
+    platform: "Medium",
+    displayName: "Tremayne Washington - Author Profile",
+    snippet: "Tremayne Washington writes about organizational leadership, business innovation, and career development. 500+ followers.",
+    urlLike: "medium.com › @TremayneWashington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-medium"
+  },
+  {
+    id: "tremayne52",
+    platform: "Consulting Firms Directory",
+    displayName: "Tremayne Washington - Consultant Profile",
+    snippet: "Tremayne Washington, management consultant specializing in organizational transformation and strategy implementation.",
+    urlLike: "consultingfirms.org › consultant › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-consulting"
+  },
+  {
+    id: "tremayne53",
+    platform: "Academy of Trial Lawyers",
+    displayName: "Tremayne Washington - Member Directory",
+    snippet: "Tremayne Washington, litigation attorney and member of Academy of Trial Lawyers. Recognized for excellence in trial work.",
+    urlLike: "triallawyers.org › member › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-triallawyers"
+  },
+  {
+    id: "tremayne54",
+    platform: "American Bar Association",
+    displayName: "Tremayne Washington - ABA Member",
+    snippet: "Tremayne Washington is an active member of the American Bar Association and serves on the Business Law Section.",
+    urlLike: "americanbar.org › member › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-aba"
+  },
+  {
+    id: "tremayne55",
+    platform: "National Bar Association",
+    displayName: "Tremayne Washington - Member Profile",
+    snippet: "Tremayne Washington, member of National Bar Association dedicated to promoting African American attorneys and judges.",
+    urlLike: "nationalbar.org › member › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-nba"
+  },
+  {
+    id: "tremayne56",
+    platform: "Illinois Judges Association",
+    displayName: "Tremayne Washington - Judge Profile",
+    snippet: "Honorable Tremayne Washington, Judge appointed 2015. Illinois Circuit Court, Cook County Division.",
+    urlLike: "iljudges.org › member › washington-t",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-judge"
+  },
+  {
+    id: "tremayne57",
+    platform: "Chicago Bar Association",
+    displayName: "Tremayne Washington - Lawyer Referral",
+    snippet: "Tremayne Washington listed with Chicago Bar Association. Experienced attorney specializing in corporate and civil litigation.",
+    urlLike: "chicagobar.org › lawyer-referral › washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-cba"
+  },
+  {
+    id: "tremayne58",
+    platform: "American College of Trial Lawyers",
+    displayName: "Tremayne Washington - Fellow",
+    snippet: "Tremayne Washington is recognized as a Fellow of the American College of Trial Lawyers, an exclusive professional organization.",
+    urlLike: "actl.com › fellow › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-actl"
+  },
+  {
+    id: "tremayne59",
+    platform: "Corporate Board Member Magazine",
+    displayName: "Tremayne Washington - Board Leadership",
+    snippet: "Featured: Tremayne Washington on his board service and corporate governance leadership. Director profiles and insights.",
+    urlLike: "boardmember.com › profile › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-cbm"
+  },
+  {
+    id: "tremayne60",
+    platform: "Professional Associations Index",
+    displayName: "Tremayne Washington - Member Directory",
+    snippet: "Tremayne Washington listed in professional associations directory for business leaders and corporate executives.",
+    urlLike: "associations.org › directory › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-assoc-index"
+  },
+  // Page 6 - Final Entries
+  {
+    id: "tremayne61",
+    platform: "Tech Community Weekly",
+    displayName: "Tremayne Washington - Industry Commentary",
+    snippet: "Tremayne Washington contributes insights on technology transformation and business innovation to Tech Community Weekly.",
+    urlLike: "techcommunityweekly.com › contributors › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-tcw"
+  },
+  {
+    id: "tremayne62",
+    platform: "Regional Business Journal",
+    displayName: "Tremayne Washington - Leadership Q&A",
+    snippet: "Interview with Tremayne Washington on leadership lessons, community involvement, and business strategy in the Chicago region.",
+    urlLike: "rbj.com › news › tremayne-washington-qa",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-rbj"
+  },
+  {
+    id: "tremayne63",
+    platform: "Diversity & Inclusion Network",
+    displayName: "Tremayne Washington - DEI Leader",
+    snippet: "Featured diversity and inclusion leader in Tremayne Washington's work advancing equitable business practices and mentorship.",
+    urlLike: "deinetwork.org › leaders › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-dei"
+  },
+  {
+    id: "tremayne64",
+    platform: "Charitable Giving Index",
+    displayName: "Tremayne Washington - Philanthropist",
+    snippet: "Tremayne Washington recognized for significant charitable contributions to education, civil rights, and community development organizations.",
+    urlLike: "charitablegiving.org › donors › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-charity"
+  },
+  {
+    id: "tremayne65",
+    platform: "Global Leadership Forum",
+    displayName: "Tremayne Washington - Speaker & Panelist",
+    snippet: "Tremayne Washington speaks at international leadership forums on corporate governance, ethics, and organizational leadership.",
+    urlLike: "globalleadershipforum.org › speakers › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-glf"
+  },
+  {
+    id: "tremayne66",
+    platform: "Legal Technology Institute",
+    displayName: "Tremayne Washington - LegalTech Advisor",
+    snippet: "Tremayne Washington serves as advisor for legal technology innovations and modernization of law practice management.",
+    urlLike: "legaltechinstitute.org › advisor › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-lti"
+  },
+  {
+    id: "tremayne67",
+    platform: "Small Business Administration",
+    displayName: "Tremayne Washington - Mentorship Program",
+    snippet: "Tremayne Washington participates in SBA mentorship programs supporting minority and women-owned small business growth.",
+    urlLike: "sba.gov › mentors › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "Chicago, Illinois",
+    imageKey: "tremayne-sba"
+  },
+  {
+    id: "tremayne68",
+    platform: "University Board of Advisors",
+    displayName: "Tremayne Washington - Academic Advisory Board",
+    snippet: "Tremayne Washington serves on the Board of Advisors for business schools providing guidance on curriculum and industry trends.",
+    urlLike: "universityboard.edu › advisory › tremayne-washington",
+    discoverability: "High",
+    footprint: "Present",
+    race: "African American",
+    location: "",
+    imageKey: "tremayne-board"
+  }
+];
+
+export const RESULTS = {
+  High_Present: RESULTS_High_Present,
+  High_Absent: RESULTS_High_Absent,
+  Low_Present: RESULTS_Low_Present,
+  Low_Absent: RESULTS_Low_Absent,
+  Adeeb_Present: RESULTS_Adeeb_Present,
+  Tremayne_Washington: RESULTS_Tremayne_Washington,
+};
