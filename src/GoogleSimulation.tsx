@@ -11,7 +11,7 @@ import {
   type SimResult
 } from './data/results';
 import { getRelatedSearches } from './data/relatedSearches';
-import { trackPageView, trackTabChange, trackPagination, trackSearch, trackResultClick, trackEvent, trackProfileView, trackProfileClose, trackSessionEnd } from './utils/tracking';
+import { trackPageView, trackTabChange, trackPagination, trackSearch, trackResultClick, trackEvent, trackProfileView, trackProfileClose, trackSessionEnd } , type ProlificParams } from './utils/tracking';
 
 interface GoogleSimulationProps {
   searchType?: 'tremayne';
@@ -28,6 +28,12 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
   const initialParams = useMemo(() => new URLSearchParams(window.location.search), []);
   const returnUrl = useMemo(() => initialParams.get('returnUrl') || 'https://gmu.az1.qualtrics.com/jfe/form/SV_dpetNtWS5RNFmMS', [initialParams]);
   const footprintCondition = useMemo(() => initialParams.get('condition') || 'present', [initialParams]);
+  // Capture Prolific parameters from URL
+  const prolificParams: ProlificParams = useMemo(() => ({
+    prolificPid: initialParams.get('PROLIFIC_PID') || undefined,
+    studyId: initialParams.get('STUDY_ID') || undefined,
+    sessionIdProlific: initialParams.get('SESSION_ID') || undefined,
+  }), [initialParams]);
 
   // Force light mode as requested
   const isDark = false;
@@ -47,13 +53,13 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
 
   // Track page view on mount
   useEffect(() => {
-    trackPageView('tremayne', currentPage, activeTab, footprintCondition);
+    trackPageView('tremayne', currentPage, activeTab, footprintCondition, prolificParams);
   }, []);
 
   // Track session end on page unload
   useEffect(() => {
     const handleBeforeUnload = () => {
-      trackSessionEnd('tremayne', currentPage, activeTab, footprintCondition);
+      trackSessionEnd('tremayne', currentPage, activeTab, footprintCondition, prolificParams);
     };
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
@@ -62,14 +68,14 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
   // Track tab changes
   useEffect(() => {
     if (activeTab) {
-      trackTabChange(activeTab, 'tremayne', footprintCondition);
+      trackTabChange(activeTab, 'tremayne', footprintCondition, prolificParams);
     }
   }, [activeTab, footprintCondition]);
 
   // Track pagination
   useEffect(() => {
     if (currentPage > 1) {
-      trackPagination(currentPage, 'tremayne', footprintCondition);
+      trackPagination(currentPage, 'tremayne', footprintCondition, prolificParams);
     }
   }, [currentPage, footprintCondition]);
 
@@ -142,7 +148,16 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#fff' }}>
-      <TopBar searchQuery={searchQuery} onSearchChange={setSearchQuery} isDark={isDark} />
+      <TopBar
+        searchQuery={searchQuery}
+        onSearchChange={(query) => {
+          setSearchQuery(query);
+          if (query) {
+            trackSearch(query, 'tremayne', footprintCondition, prolificParams);
+          }
+        }}
+        isDark={isDark}
+      />
       <Tabs activeTab={activeTab} onTabChange={setActiveTab} isDark={isDark} />
 
       <div style={{ maxWidth: '1128px', margin: '0 auto', padding: isMobile ? '0 8px' : '0 16px' }}>
@@ -214,13 +229,13 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                         result={result}
                         onOpen={(result) => {
                           // Track the click for all results
-                          trackResultClick(result.id, result.platform, result.displayName, 'tremayne', footprintCondition);
+                          trackResultClick(result.id, result.platform, result.displayName, 'tremayne', footprintCondition, prolificParams);
                           // In footprint absent condition, no profiles open
                           if (footprintCondition === 'absent') return;
                           // Only open LinkedIn and Facebook profiles
                           if (result.platform === 'LinkedIn' || result.platform === 'Facebook') {
                             setSelectedResult(result);
-                            trackProfileView(result.id, result.platform, result.displayName, 'tremayne', footprintCondition);
+                            trackProfileView(result.id, result.platform, result.displayName, 'tremayne', footprintCondition, prolificParams);
                           }
                         }}
                         isDark={isDark}
@@ -338,7 +353,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
           resultId={selectedResult.id}
           onClose={() => {
             if (selectedResult) {
-              trackProfileClose(selectedResult.id, 'LinkedIn', 'tremayne', footprintCondition);
+              trackProfileClose(selectedResult.id, 'LinkedIn', 'tremayne', footprintCondition, prolificParams);
             }
             setSelectedResult(null);
           }}
@@ -349,7 +364,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
           resultId={selectedResult.id}
           onClose={() => {
             if (selectedResult) {
-              trackProfileClose(selectedResult.id, 'Facebook', 'tremayne', footprintCondition);
+              trackProfileClose(selectedResult.id, 'Facebook', 'tremayne', footprintCondition, prolificParams);
             }
             setSelectedResult(null);
           }}
