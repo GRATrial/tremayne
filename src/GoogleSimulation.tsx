@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { TopBar } from './components/TopBar';
 import { Tabs } from './components/Tabs';
 import { ResultCard } from './components/ResultCard';
@@ -65,18 +65,26 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [currentPage, activeTab, footprintCondition]);
 
-  // Track tab changes
+  // Track tab changes (skip first render to avoid spurious event on mount)
+  const isFirstTabRender = useRef(true);
   useEffect(() => {
+    if (isFirstTabRender.current) {
+      isFirstTabRender.current = false;
+      return;
+    }
     if (activeTab) {
       trackTabChange(activeTab, 'tremayne', footprintCondition, prolificParams);
     }
   }, [activeTab, footprintCondition]);
 
-  // Track pagination
+  // Track pagination (skip first render to avoid spurious event on mount)
+  const isFirstPagRender = useRef(true);
   useEffect(() => {
-    if (currentPage > 1) {
-      trackPagination(currentPage, 'tremayne', footprintCondition, prolificParams);
+    if (isFirstPagRender.current) {
+      isFirstPagRender.current = false;
+      return;
     }
+    trackPagination(currentPage, 'tremayne', footprintCondition, prolificParams);
   }, [currentPage, footprintCondition]);
 
   // Get results for Tremayne (filter out LinkedIn/Facebook in footprint absent condition)
@@ -261,7 +269,6 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                 {currentPage > 1 && (
                   <button
                     onClick={() => {
-                      trackPagination(currentPage - 1, 'tremayne', footprintCondition, prolificParams);
                       setCurrentPage(currentPage - 1);
                     }}
                     style={{
@@ -289,7 +296,6 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                     <button
                       key={pageNum}
                       onClick={() => {
-                        trackPagination(pageNum, 'tremayne', footprintCondition, prolificParams);
                         setCurrentPage(pageNum);
                       }}
                       style={{
@@ -313,7 +319,6 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                 {currentPage < totalPages && (
                   <button
                     onClick={() => {
-                      trackPagination(currentPage + 1, 'tremayne', footprintCondition, prolificParams);
                       setCurrentPage(currentPage + 1);
                     }}
                     style={{
