@@ -754,7 +754,7 @@ export const RESULTS_High_Present: SimResult[] = [
 
 
 
-    snippet: "2.6K+ followers. Our rustic, idyllic, lake side event venue nestled in the pines on Liberty Lake, WA. Weddings, concerts, yoga retreats, and more. zephyrlibertylake.com + 1.",
+    snippet: "350+ followers. Our rustic, idyllic, lake side event venue nestled in the pines on Liberty Lake, WA. Weddings, concerts, yoga retreats, and more. zephyrlibertylake.com + 1.",
 
 
 
@@ -1330,7 +1330,7 @@ export const RESULTS_High_Present: SimResult[] = [
 
 
 
-    snippet: "2.6K+ followers. Our rustic, idyllic, lake side event venue nestled in the pines on Liberty Lake, WA. Weddings, concerts, yoga retreats, and more. zephyrlibertylake.com + 1.",
+    snippet: "350+ followers. Our rustic, idyllic, lake side event venue nestled in the pines on Liberty Lake, WA. Weddings, concerts, yoga retreats, and more. zephyrlibertylake.com + 1.",
 
 
 
@@ -2349,7 +2349,7 @@ export const RESULTS_Low_Present: SimResult[] = [
 
 
 
-    snippet: "106.1K+ followers · 106K followers · 342 following · 237 posts · @mjgold4: \"Olympic and World Champion. 12x Gold 0x Silver 0x Bronze. CEO & Commissioner Grand Slam Track\"",
+    snippet: "350+ followers · 350+ followers · 342 following · 237 posts · @mjgold4: \"Olympic and World Champion. 12x Gold 0x Silver 0x Bronze. CEO & Commissioner Grand Slam Track\"",
 
 
 
@@ -6393,13 +6393,13 @@ export const RESULTS_Tremayne_Washington: SimResult[] = [
     id: "tremayne3",
     platform: "Instagram",
     displayName: "Tremayne Washington (@tremayne_wash) • Instagram",
-    snippet: "1.2K+ followers · 185 following · 124 posts · @tremayne_wash: Chicago | Finance | UMich Alum | Living life one day at a time",
+    snippet: "350+ followers · 185 following · 124 posts · @tremayne_wash: Chicago | Finance | UMich Alum | Living life one day at a time",
     urlLike: "Instagram · tremayne_wash",
     discoverability: "High",
     footprint: "Present",
     race: "African American",
     location: "",
-    followers: "1.6K+",
+    followers: "350+",
     imageKey: "tremayne-insta"
   },
   {
