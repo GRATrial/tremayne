@@ -6840,7 +6840,7 @@ export const RESULTS_Tremayne_Washington: SimResult[] = [
   },
   {
     id: "tremayne50",
-    platform: "Twitter",
+    platform: "X",
     displayName: "Tremayne Washington (@TremayneW) - Tweet Results",
     snippet: "Tremayne Washington's Twitter. Tweets about leadership, business strategy, and professional development. 12K followers.",
     urlLike: "twitter.com › TremayneW",
