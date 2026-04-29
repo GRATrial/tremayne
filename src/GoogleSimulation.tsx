@@ -4,6 +4,8 @@ import { Tabs } from './components/Tabs';
 import { ResultCard } from './components/ResultCard';
 import { LinkedInProfileView as LinkedInProfile } from './components/LinkedInProfile';
 import { FacebookProfileView as FacebookProfile } from './components/FacebookProfile';
+import { InstagramProfile } from './components/InstagramProfile';
+import { XProfile } from './components/XProfile';
 import { PeopleAlsoSearchFor } from './components/PeopleAlsoSearchFor';
 
 import {
@@ -97,7 +99,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
     console.log('Loaded', RESULTS_Tremayne_Washington.length, 'results');
     if (footprintCondition === 'absent') {
       return RESULTS_Tremayne_Washington.filter(
-        r => r.platform !== 'LinkedIn' && r.platform !== 'Facebook'
+        r => r.platform !== 'LinkedIn' && r.platform !== 'Facebook' && r.platform !== 'Instagram' && r.platform !== 'X'
       );
     }
     return RESULTS_Tremayne_Washington;
@@ -241,7 +243,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                           // In footprint absent condition, no profiles open
                           if (footprintCondition === 'absent') return;
                           // Only open LinkedIn and Facebook profiles
-                          if (result.platform === 'LinkedIn' || result.platform === 'Facebook') {
+                          if (result.platform === 'LinkedIn' || result.platform === 'Facebook' || result.platform === 'Instagram' || result.platform === 'X') {
                             setSelectedResult(result);
                             trackProfileView(result.id, result.platform, result.displayName, 'tremayne', footprintCondition, prolificParams);
                           }
@@ -356,6 +358,9 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
       {selectedResult && selectedResult.platform === 'LinkedIn' && (
         <LinkedInProfile
           resultId={selectedResult.id}
+          persona="tremayne"
+          condition={footprintCondition}
+          prolificParams={prolificParams}
           onClose={() => {
             if (selectedResult) {
               trackProfileClose(selectedResult.id, 'LinkedIn', 'tremayne', footprintCondition, prolificParams);
@@ -367,9 +372,40 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
       {selectedResult && selectedResult.platform === 'Facebook' && (
         <FacebookProfile
           resultId={selectedResult.id}
+          persona="tremayne"
+          condition={footprintCondition}
+          prolificParams={prolificParams}
           onClose={() => {
             if (selectedResult) {
               trackProfileClose(selectedResult.id, 'Facebook', 'tremayne', footprintCondition, prolificParams);
+            }
+            setSelectedResult(null);
+          }}
+        />
+      )}
+      {selectedResult && selectedResult.platform === 'Instagram' && (
+        <InstagramProfile
+          resultId={selectedResult.id}
+          persona="tremayne"
+          condition={footprintCondition}
+          prolificParams={prolificParams}
+          onClose={() => {
+            if (selectedResult) {
+              trackProfileClose(selectedResult.id, 'Instagram', 'tremayne', footprintCondition, prolificParams);
+            }
+            setSelectedResult(null);
+          }}
+        />
+      )}
+      {selectedResult && selectedResult.platform === 'X' && (
+        <XProfile
+          resultId={selectedResult.id}
+          persona="tremayne"
+          condition={footprintCondition}
+          prolificParams={prolificParams}
+          onClose={() => {
+            if (selectedResult) {
+              trackProfileClose(selectedResult.id, 'X', 'tremayne', footprintCondition, prolificParams);
             }
             setSelectedResult(null);
           }}

@@ -1,13 +1,17 @@
 import React, { useMemo } from 'react';
 import { FacebookProfileData, generateFacebookProfile } from '../utils/facebookData';
 import { getFakeImageUrl } from '../utils/fakeImages';
+import { trackEvent, type ProlificParams } from '../utils/tracking';
 
 interface FacebookProfileProps {
   resultId: string;
   onClose: () => void;
+  persona?: string;
+  condition?: string;
+  prolificParams?: ProlificParams;
 }
 
-export const FacebookProfileView: React.FC<FacebookProfileProps> = ({ resultId, onClose }) => {
+export const FacebookProfileView: React.FC<FacebookProfileProps> = ({ resultId, onClose, persona = 'tremayne', condition, prolificParams }) => {
   const [showStickyHeader, setShowStickyHeader] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState('All');
   const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
@@ -223,7 +227,20 @@ export const FacebookProfileView: React.FC<FacebookProfileProps> = ({ resultId, 
             {['All', 'About', 'Friends', 'Photos', 'Check-ins', 'More'].map((tab, i) => (
               <div 
                 key={tab} 
-                onClick={() => tab !== 'More' && setActiveTab(tab)}
+                onClick={() => {
+                  if (tab !== 'More') {
+                    trackEvent({
+                      eventType: 'tab_change',
+                      elementType: 'overlay_internal_tab',
+                      platform: 'Facebook',
+                      elementText: tab,
+                      persona,
+                      condition,
+                      ...(prolificParams || {}),
+                    });
+                    setActiveTab(tab);
+                  }
+                }}
                 style={{ 
                   padding: '16px 12px', 
                   color: activeTab === tab ? '#1877f2' : '#65676b', 
