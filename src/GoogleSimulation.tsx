@@ -97,12 +97,15 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
       return [];
     }
     console.log('Loaded', RESULTS_Tremayne_Washington.length, 'results');
-    if (footprintCondition === 'absent') {
-      return RESULTS_Tremayne_Washington.filter(
-        r => r.platform !== 'LinkedIn' && r.platform !== 'Facebook' && r.platform !== 'Instagram' && r.platform !== 'X'
-      );
-    }
-    return RESULTS_Tremayne_Washington;
+    const base = footprintCondition === 'absent'
+      ? RESULTS_Tremayne_Washington.filter(r => r.platform !== 'LinkedIn' && r.platform !== 'Facebook' && r.platform !== 'Instagram' && r.platform !== 'X')
+      : RESULTS_Tremayne_Washington;
+    // Pin canonical target profiles to the top of SERP
+    return [...base].sort((a, b) => {
+      if (a.isTarget && !b.isTarget) return -1;
+      if (!a.isTarget && b.isTarget) return 1;
+      return 0;
+    });
   }, [footprintCondition]);
 
   // Filter results by active tab
@@ -242,8 +245,9 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
                           trackResultClick(result.id, result.platform, result.displayName, 'tremayne', footprintCondition, prolificParams);
                           // In footprint absent condition, no profiles open
                           if (footprintCondition === 'absent') return;
-                          // Only open LinkedIn and Facebook profiles
-                          if (result.platform === 'LinkedIn' || result.platform === 'Facebook' || result.platform === 'Instagram' || result.platform === 'X') {
+                          // Open overlays only for the canonical TARGET profile of each platform
+                          // (namesake/aggregation results stay clickable but silent)
+                          if (result.isTarget && (result.platform === 'LinkedIn' || result.platform === 'Facebook' || result.platform === 'Instagram' || result.platform === 'X')) {
                             setSelectedResult(result);
                             trackProfileView(result.id, result.platform, result.displayName, 'tremayne', footprintCondition, prolificParams);
                           }

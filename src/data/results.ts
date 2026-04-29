@@ -70,6 +70,10 @@ export type SimResult = {
 
 
 
+  isTarget?: boolean;            // true = the canonical target persona's profile (overlay opens on click)
+
+
+
 };
 
 
@@ -6354,6 +6358,7 @@ export const RESULTS_Tremayne_Washington: SimResult[] = [
   },
   {
     id: "tremayne5",
+    isTarget: true,
     platform: "LinkedIn",
     displayName: "Tremayne Washington - Chicago Investment Partners",
     snippet: "290+ followers · Chicago, Illinois, United States · Chicago Investment Partners · Experience: Chicago Investment Partners · Education: University of Michigan · Location: Chicago · 340+ connections on LinkedIn. View Tremayne Washington's profile on LinkedIn, ...",
@@ -6367,6 +6372,7 @@ export const RESULTS_Tremayne_Washington: SimResult[] = [
   },
   {
     id: "tremayne6",
+    isTarget: true,
     platform: "Facebook",
     displayName: "Tremayne Washington in people",
     snippet: "People named Tremayne Washington ; Tremayne Washington. Owner at Deer Rock Knives LLC · Lives in ; Tremayne Washington. Lives in Greensburg, Indiana ; Tremayne Washington. Business ...Read more",
@@ -6391,6 +6397,7 @@ export const RESULTS_Tremayne_Washington: SimResult[] = [
   },
   {
     id: "tremayne3",
+    isTarget: true,
     platform: "Instagram",
     displayName: "Tremayne Washington (@tremayne_wash) • Instagram",
     snippet: "350+ followers · 185 following · 124 posts · @tremayne_wash: Chicago | Finance | UMich Alum | Living life one day at a time",
@@ -6840,6 +6847,7 @@ export const RESULTS_Tremayne_Washington: SimResult[] = [
   },
   {
     id: "tremayne50",
+    isTarget: true,
     platform: "X",
     displayName: "Tremayne Washington (@TremayneW) - Tweet Results",
     snippet: "Tremayne Washington's Twitter. Tweets about leadership, business strategy, and professional development. 12K followers.",
