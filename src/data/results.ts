@@ -3697,7 +3697,7 @@ export const RESULTS_Low_Present: SimResult[] = [
 
 
 
-    snippet: "1.2M+ followers. Speaker Mike Johnson (@SpeakerJohnson) - Posts - 56th Speaker of the House | Christian, husband, dad, Constitutional law attorney & small ...",
+    snippet: "350+ followers. Speaker Mike Johnson (@SpeakerJohnson) - Posts - 56th Speaker of the House | Christian, husband, dad, Constitutional law attorney & small ...",
 
 
 
@@ -6850,7 +6850,7 @@ export const RESULTS_Tremayne_Washington: SimResult[] = [
     isTarget: true,
     platform: "X",
     displayName: "Tremayne Washington (@TremayneW) - Tweet Results",
-    snippet: "Tremayne Washington's Twitter. Tweets about leadership, business strategy, and professional development. 12K followers.",
+    snippet: "Tremayne Washington's Twitter. Tweets about leadership, business strategy, and professional development. 350+ followers.",
     urlLike: "twitter.com › TremayneW",
     discoverability: "High",
     footprint: "Present",
