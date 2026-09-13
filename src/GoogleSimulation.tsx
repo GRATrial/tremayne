@@ -13,7 +13,7 @@ import {
   type SimResult
 } from './data/results';
 import { getRelatedSearches } from './data/relatedSearches';
-import { trackPageView, trackTabChange, trackPagination, trackSearch, trackResultClick, trackEvent, trackProfileView, trackProfileClose, trackSessionEnd, type ProlificParams } from './utils/tracking';
+import { trackPageView, trackTabChange, trackPagination, trackSearch, trackResultClick, trackEvent, trackEventBeacon, trackProfileView, trackProfileClose, trackSessionEnd, type ProlificParams } from './utils/tracking';
 import { useEngagementTracking } from './utils/engagement';
 
 interface GoogleSimulationProps {
@@ -182,7 +182,7 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
         <div style={{ paddingTop: isMobile ? '12px' : '20px', paddingBottom: '8px' }}>
           <button
             onClick={() => {
-              trackEvent({
+              trackEventBeacon({
                 eventType: 'click',
                 elementType: 'done_searching_button',
                 elementText: 'Done Searching',
