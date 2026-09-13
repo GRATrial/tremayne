@@ -14,6 +14,7 @@ import {
 } from './data/results';
 import { getRelatedSearches } from './data/relatedSearches';
 import { trackPageView, trackTabChange, trackPagination, trackSearch, trackResultClick, trackEvent, trackProfileView, trackProfileClose, trackSessionEnd, type ProlificParams } from './utils/tracking';
+import { useEngagementTracking } from './utils/engagement';
 
 interface GoogleSimulationProps {
   searchType?: 'tremayne';
@@ -66,6 +67,9 @@ const GoogleSimulation: React.FC<GoogleSimulationProps> = ({ searchType = 'trema
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [currentPage, activeTab, footprintCondition]);
+
+  // Scroll-depth milestones + tab visibility (see utils/engagement.ts)
+  useEngagementTracking('tremayne', currentPage, activeTab, footprintCondition, prolificParams);
 
   // Track tab changes (skip first render to avoid spurious event on mount)
   const isFirstTabRender = useRef(true);
